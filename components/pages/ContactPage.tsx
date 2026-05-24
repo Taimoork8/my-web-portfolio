@@ -31,15 +31,15 @@ const contactOptions = [
   {
     icon: GithubIcon,
     label: "GitHub",
-    value: "github.com/taimoor-khan",
-    href: "https://github.com/taimoor-khan",
+    value: "github.com/Taimoork8",
+    href: "https://github.com/Taimoork8",
     description: "See my open source work",
   },
   {
     icon: LinkedinIcon,
     label: "LinkedIn",
-    value: "linkedin.com/in/taimoor-khan",
-    href: "https://linkedin.com/in/taimoor-khan",
+    value: "linkedin.com/in/taimoorkhan405",
+    href: "https://linkedin.com/in/taimoorkhan405",
     description: "Professional background",
   },
 ];
