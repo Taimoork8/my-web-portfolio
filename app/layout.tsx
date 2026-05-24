@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, DM_Sans, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -87,6 +88,15 @@ export default function RootLayout({
       className={`dark ${bricolage.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
     >
       <body className="antialiased bg-[#0A0A0B] text-[#F0EDE6] min-h-screen">
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-0BYDLYFRVM" strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-0BYDLYFRVM');
+          `}
+        </Script>
         <Navbar />
         <main>{children}</main>
         <Footer />
