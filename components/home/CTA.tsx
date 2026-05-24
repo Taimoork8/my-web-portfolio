@@ -66,15 +66,6 @@ export default function CTA() {
                 Start a Project
                 <ArrowUpRight className="w-4 h-4" />
               </Link>
-              <a
-                href="https://calendly.com/taimoor-khan"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-white/6 border border-white/10 text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-all active:scale-95"
-              >
-                <CalendarDays className="w-4 h-4" />
-                Book a Call
-              </a>
             </motion.div>
 
             {/* Trust line */}

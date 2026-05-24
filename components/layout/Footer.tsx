@@ -37,10 +37,10 @@ const footerLinks = {
 };
 
 const social = [
-  { icon: GithubIcon, label: "GitHub", href: "https://github.com/taimoor-khan" },
-  { icon: LinkedinIcon, label: "LinkedIn", href: "https://linkedin.com/in/taimoor-khan" },
-  { icon: XIcon, label: "X / Twitter", href: "https://twitter.com/taimoor_khan" },
-  { icon: Mail, label: "Email", href: "mailto:flutterwo@gmail.com" },
+  { icon: GithubIcon, label: "GitHub", href: "https://github.com/Taimoork8" },
+  { icon: LinkedinIcon, label: "LinkedIn", href: "https://linkedin.com/in/taimoorkhan405" },
+  { icon: XIcon, label: "X / Twitter", href: "https://x.com/taimoor405" },
+  { icon: Mail, label: "Email", href: "mailto:kingtaimoor405@gmail.com" },
 ];
 
 export default function Footer() {
