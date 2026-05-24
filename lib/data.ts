@@ -225,22 +225,22 @@ export const process = [
 
 export const testimonials = [
   {
-    name: "Ahmed Raza",
-    role: "CTO, Wi3bit",
+    name: "Salik Sheraz",
+    role: "CTO",
     content:
       "Taimoor doesn't just write code—he thinks like a product engineer. He took our vague school management requirements and turned them into a system our clients genuinely love. Shipped on time, clean architecture.",
     rating: 5,
   },
   {
     name: "Sarah Mitchell",
-    role: "Founder, TechOps SaaS",
+    role: "Founder",
     content:
       "Working with Taimoor on our automation platform was a great experience. He asked sharp questions up front, built exactly what we needed, and the codebase was clean enough that our team could pick it up immediately.",
     rating: 5,
   },
   {
-    name: "James Park",
-    role: "Lead Engineer, IoT Startup",
+    name: "Malik",
+    role: "Lead Engineer",
     content:
       "The BLE mobile app he built for us handled some tricky edge cases around device pairing that other developers had given up on. Deep technical knowledge combined with clear communication throughout.",
     rating: 5,
