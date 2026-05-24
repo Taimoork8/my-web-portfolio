@@ -83,12 +83,13 @@ function DashboardVisual() {
         {/* Footer */}
         <div className="mt-5 pt-4 border-t border-white/6 flex items-center justify-between">
           <span className="text-[10px] text-white/30 font-mono">AI intent scoring</span>
-          <div className="flex gap-1">
+          <div className="flex gap-1 items-end h-5">
             {[1, 2, 3].map((i) => (
               <motion.div
                 key={i}
-                className="w-1 rounded-full bg-[#C6F432]"
-                animate={{ height: [8, 16, 10, 20, 8] }}
+                className="w-1 h-5 rounded-full bg-[#C6F432]"
+                style={{ originY: 1 }}
+                animate={{ scaleY: [0.4, 0.8, 0.5, 1, 0.4] }}
                 transition={{ repeat: Infinity, duration: 1.2, delay: i * 0.2, ease: "easeInOut" }}
               />
             ))}
