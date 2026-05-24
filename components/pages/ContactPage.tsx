@@ -46,7 +46,7 @@ const contactOptions = [
 
 export default function ContactPage() {
   const [form, setForm] = useState({ name: "", email: "", project: "", message: "" });
-  const [status, setStatus] = useState<"idle" | "submitting" | "done">("idle");
+  const [status, setStatus] = useState<"idle" | "submitting" | "done" | "error">("idle");
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -55,16 +55,21 @@ export default function ContactPage() {
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setStatus("submitting");
-    const res = await fetch("https://api.web3forms.com/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
-        to: "kingtaimoor405@gmail.com",
-        ...form,
-      }),
-    });
-    setStatus(res.ok ? "done" : "idle");
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          subject: `New contact from ${form.name} — ${form.project}`,
+          ...form,
+        }),
+      });
+      const data = await res.json();
+      setStatus(data.success ? "done" : "error");
+    } catch {
+      setStatus("error");
+    }
   }
 
   const inputClass =
@@ -105,6 +110,16 @@ export default function ContactPage() {
                 <p className="text-sm text-white/45">
                   I&apos;ll get back to you within 24 hours.
                 </p>
+              </div>
+            ) : status === "error" ? (
+              <div className="h-full flex flex-col items-center justify-center py-20 text-center">
+                <p className="text-sm text-red-400 mb-3">Something went wrong. Please try again or email me directly.</p>
+                <button
+                  onClick={() => setStatus("idle")}
+                  className="text-sm text-[#C6F432] underline underline-offset-2"
+                >
+                  Try again
+                </button>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
