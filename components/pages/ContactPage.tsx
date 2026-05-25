@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, Mail, Clock, CheckCircle } from "lucide-react";
+import { ArrowUpRight, Mail, Clock, CheckCircle, FileText } from "lucide-react";
 
 function GithubIcon({ className }: { className?: string }) {
   return (
@@ -41,6 +41,13 @@ const contactOptions = [
     value: "linkedin.com/in/taimoorkhan405",
     href: "https://linkedin.com/in/taimoorkhan405",
     description: "Professional background",
+  },
+  {
+    icon: FileText,
+    label: "Download CV",
+    value: "View & download resume",
+    href: "https://drive.google.com/file/d/1H_Va0Icv9RLO0psrz22JMjOZA-_s_ka0/view?usp=sharing",
+    description: "Opens in Google Drive",
   },
 ];
 
