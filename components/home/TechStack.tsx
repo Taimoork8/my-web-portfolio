@@ -6,7 +6,7 @@ import { techStack } from "@/lib/data";
 const categoryColors: Record<string, string> = {
   Frontend: "#C6F432",
   Backend: "#6DE7FF",
-  Systems: "#FF6B3D",
+  Systems: "#FF5E5B", // Using the brand coral color to match the global branding
 };
 
 export default function TechStack() {
@@ -42,29 +42,37 @@ export default function TechStack() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: catIndex * 0.1 }}
-                className="p-6 rounded-2xl bg-[#111113] border border-white/8"
+                className="p-6 rounded-2xl bg-[#111113] border border-white/8 hover:border-white/12 transition-all duration-300"
               >
                 <div className="flex items-center gap-2 mb-5">
-                  <div className="w-1.5 h-1.5 rounded-full" style={{ background: color }} />
+                  <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: color }} />
                   <span className="text-xs font-semibold uppercase tracking-widest text-white/40">
                     {category}
                   </span>
                 </div>
 
-                <div className="space-y-2.5">
+                <div className="space-y-1">
                   {items.map((tech, i) => (
                     <motion.div
                       key={tech.name}
                       initial={{ opacity: 0, x: -8 }}
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: catIndex * 0.1 + i * 0.05 + 0.2 }}
-                      className="flex items-center justify-between group"
+                      transition={{ delay: catIndex * 0.1 + i * 0.04 + 0.15 }}
+                      className="flex items-center justify-between p-2 rounded-lg hover:bg-white/3 border border-transparent hover:border-white/5 transition-all duration-200 group cursor-default"
                     >
                       <span className="text-sm text-white/70 group-hover:text-white transition-colors">
                         {tech.name}
                       </span>
-                      <span className="text-[11px] font-mono text-white/25">{tech.years}</span>
+                      
+                      <div className="flex items-center gap-2 overflow-hidden">
+                        <span className="text-[9px] font-mono opacity-0 group-hover:opacity-100 translate-x-2 group-hover:translate-x-0 transition-all duration-300 px-1.5 py-0.5 rounded" style={{ background: `${color}14`, border: `1px solid ${color}20`, color }}>
+                          exp
+                        </span>
+                        <span className="text-[11px] font-mono text-white/20 group-hover:text-white transition-all duration-300">
+                          {tech.years}
+                        </span>
+                      </div>
                     </motion.div>
                   ))}
                 </div>

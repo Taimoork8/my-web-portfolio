@@ -2,8 +2,26 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight, Check } from "lucide-react";
+import { ArrowUpRight, Check, Rocket, Layers, Smartphone, Brain, Cpu, LayoutDashboard } from "lucide-react";
 import { fullServices } from "@/lib/data";
+
+const serviceIcons: Record<string, any> = {
+  mvp: Rocket,
+  saas: Layers,
+  mobile: Smartphone,
+  ai: Brain,
+  automation: Cpu,
+  dashboard: LayoutDashboard,
+};
+
+const serviceColors: Record<string, string> = {
+  mvp: "#C6F432",
+  saas: "#6DE7FF",
+  mobile: "#C6F432",
+  ai: "#FF5E5B",
+  automation: "#a855f7",
+  dashboard: "#6DE7FF",
+};
 
 export default function ServicesPage() {
   return (
@@ -27,61 +45,76 @@ export default function ServicesPage() {
 
         {/* Services */}
         <div className="space-y-6">
-          {fullServices.map((service, i) => (
-            <motion.div
-              key={service.id}
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-60px" }}
-              transition={{ duration: 0.55, delay: i * 0.06 }}
-              className="p-8 rounded-2xl bg-[#111113] border border-white/8 hover:border-white/12 transition-colors group"
-            >
-              <div className="grid lg:grid-cols-3 gap-8">
-                {/* Left: Main info */}
-                <div className="lg:col-span-2">
-                  <h2 className="font-display text-2xl font-bold text-white mb-2 group-hover:text-white transition-colors">
-                    {service.title}
-                  </h2>
-                  <p className="text-sm text-[#C6F432]/80 mb-4">{service.tagline}</p>
-                  <p className="text-sm text-white/55 leading-relaxed mb-6">{service.description}</p>
+          {fullServices.map((service, i) => {
+            const Icon = serviceIcons[service.id] || Layers;
+            const color = serviceColors[service.id] || "#C6F432";
+            return (
+              <motion.div
+                key={service.id}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.55, delay: i * 0.06 }}
+                className="p-8 rounded-2xl bg-[#111113] border border-white/8 hover:border-white/12 transition-all duration-300 group overflow-hidden relative"
+              >
+                {/* Accent glow on hover */}
+                <div
+                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{ background: `radial-gradient(ellipse at 0% 0%, ${color}05, transparent 70%)` }}
+                />
 
-                  {/* Benefits */}
-                  <div className="grid sm:grid-cols-2 gap-2 mb-6">
-                    {service.benefits.map((b) => (
-                      <div key={b} className="flex items-start gap-2">
-                        <Check className="w-3.5 h-3.5 text-[#C6F432] mt-0.5 flex-shrink-0" />
-                        <span className="text-sm text-white/60">{b}</span>
+                <div className="grid lg:grid-cols-3 gap-8 relative z-10">
+                  {/* Left: Main info */}
+                  <div className="lg:col-span-2">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ background: `${color}14`, border: `1px solid ${color}20` }}>
+                        <Icon className="w-4 h-4" style={{ color }} />
                       </div>
-                    ))}
+                      <h2 className="font-display text-2xl font-bold text-white group-hover:text-white transition-colors">
+                        {service.title}
+                      </h2>
+                    </div>
+                    <p className="text-sm font-mono mb-4" style={{ color }}>{service.tagline}</p>
+                    <p className="text-sm text-white/55 leading-relaxed mb-6">{service.description}</p>
+
+                    {/* Benefits */}
+                    <div className="grid sm:grid-cols-2 gap-2 mb-6">
+                      {service.benefits.map((b) => (
+                        <div key={b} className="flex items-start gap-2">
+                          <Check className="w-3.5 h-3.5 mt-0.5 flex-shrink-0" style={{ color }} />
+                          <span className="text-sm text-white/60">{b}</span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Stack */}
+                    <div className="flex flex-wrap gap-1.5">
+                      {service.stack.map((t) => (
+                        <span key={t} className="px-2.5 py-1 rounded-md text-xs text-white/40 bg-white/4 border border-white/6">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
                   </div>
 
-                  {/* Stack */}
-                  <div className="flex flex-wrap gap-1.5">
-                    {service.stack.map((t) => (
-                      <span key={t} className="px-2.5 py-1 rounded-md text-xs text-white/40 bg-white/4 border border-white/6">
-                        {t}
-                      </span>
-                    ))}
+                  {/* Right: Deliverables */}
+                  <div className="p-5 rounded-xl bg-white/3 border border-white/6 self-start">
+                    <p className="text-xs font-semibold text-white/30 uppercase tracking-widest mb-4">
+                      Deliverables
+                    </p>
+                    <ul className="space-y-2.5">
+                      {service.deliverables.map((d) => (
+                        <li key={d} className="flex items-start gap-2">
+                          <span className="w-1 h-1 rounded-full mt-2 flex-shrink-0" style={{ backgroundColor: color }} />
+                          <span className="text-sm text-white/50">{d}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
-
-                {/* Right: Deliverables */}
-                <div className="p-5 rounded-xl bg-white/3 border border-white/6">
-                  <p className="text-xs font-semibold text-white/30 uppercase tracking-widest mb-4">
-                    Deliverables
-                  </p>
-                  <ul className="space-y-2.5">
-                    {service.deliverables.map((d) => (
-                      <li key={d} className="flex items-start gap-2">
-                        <span className="w-1 h-1 rounded-full bg-white/25 mt-2 flex-shrink-0" />
-                        <span className="text-sm text-white/50">{d}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* CTA */}

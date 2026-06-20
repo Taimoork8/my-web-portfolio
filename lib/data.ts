@@ -51,33 +51,6 @@ export const services = [
 
 export const projects = [
   {
-    id: "leadsignal",
-    slug: "leadsignal",
-    category: "AI Platform",
-    title: "LeadSignal",
-    tagline: "AI-powered intent lead detection platform",
-    description:
-      "Built an intelligent lead generation platform that monitors Reddit and Twitter for buyer intent signals, scores leads using AI, and surfaces the best opportunities in real time.",
-    problem:
-      "Startups waste hours manually scanning social media for potential customers. Most leads are missed because the signal-to-noise ratio is too high for humans to filter effectively.",
-    solution:
-      "An automated pipeline that ingests thousands of posts, runs NLP-based intent scoring, and surfaces only high-intent leads with full context in a clean dashboard.",
-    features: [
-      "Reddit & Twitter real-time ingestion",
-      "AI intent scoring (0–100)",
-      "Lead filtering and categorization",
-      "Dashboard with pipeline analytics",
-      "Webhook & CRM export integrations",
-    ],
-    stack: ["Python", "Django", "Next.js", "PostgreSQL", "Redis", "OpenAI"],
-    metrics: [
-      { label: "Leads Processed", value: "50k+" },
-      { label: "Avg Score Accuracy", value: "91%" },
-      { label: "Time Saved / Week", value: "20h" },
-    ],
-    color: "#C6F432",
-  },
-  {
     id: "student-portal",
     slug: "student-portal",
     category: "EdTech SaaS",
@@ -103,6 +76,33 @@ export const projects = [
       { label: "Manual Work Reduced", value: "80%" },
     ],
     color: "#6DE7FF",
+  },
+  {
+    id: "karwan-e-falah",
+    slug: "karwan-e-falah",
+    category: "Healthcare / NGO SaaS",
+    title: "Karwan-e-Falah",
+    tagline: "Charitable medical inventory and prescription dispatch system",
+    description:
+      "A centralized inventory database and real-time prescription synchronization network built to serve welfare clinics and charitable pharmacies with auditable ledger tracking.",
+    problem:
+      "Charitable pharmacy networks struggle with tracking medicine donations, preventing distribution leaks, and verifying patient prescriptions across multiple medical units, leading to high administrative overhead and manual auditing errors.",
+    solution:
+      "A centralized Django/Daphne platform utilizing WebSockets (Channels) for real-time prescription dispatching to dispensary queues, and a background task worker (Celery) to manage double-entry ledger audits for every tablet dispensed.",
+    features: [
+      "5,000+ SKU medicine database integration",
+      "Real-time patient prescription dispatch queues",
+      "Celery background workers for inventory audits",
+      "Automated PDF reports and ledger exporting via ReportLab",
+      "Multi-tenant clinic and pharmacy nodes management",
+    ],
+    stack: ["Django", "Python", "Channels", "Celery", "PostgreSQL", "Redis", "ReportLab"],
+    metrics: [
+      { label: "SKUs Managed", value: "5,000+" },
+      { label: "Sync Latency", value: "<100ms" },
+      { label: "Auditing Hours Saved", value: "15h/wk" },
+    ],
+    color: "#FF5E5B",
   },
   {
     id: "ble-iot",
@@ -163,24 +163,26 @@ export const projects = [
 export const techStack = {
   Frontend: [
     { name: "Flutter", years: "4.5 yrs" },
+    { name: "Dart", years: "4.5 yrs" },
     { name: "Next.js", years: "2 yrs" },
     { name: "React", years: "2 yrs" },
     { name: "TypeScript", years: "2 yrs" },
-    { name: "TailwindCSS", years: "2 yrs" },
+    { name: "HTML5 & CSS3", years: "4.5 yrs" },
   ],
   Backend: [
     { name: "Django", years: "4 yrs" },
     { name: "Python", years: "4.5 yrs" },
     { name: "PostgreSQL", years: "3 yrs" },
     { name: "Firebase", years: "3 yrs" },
-    { name: "REST APIs", years: "4 yrs" },
+    { name: "REST APIs", years: "4.5 yrs" },
+    { name: "Celery & Redis", years: "2 yrs" },
   ],
   Systems: [
     { name: "BLE / IoT", years: "2 yrs" },
-    { name: "AI / LLMs", years: "1.5 yrs" },
-    { name: "Automation", years: "2 yrs" },
-    { name: "Celery / Redis", years: "2 yrs" },
+    { name: "ESP32 & STM Firmware", years: "2 yrs" },
+    { name: "AI / LLM Integrations", years: "1.5 yrs" },
     { name: "Docker", years: "2 yrs" },
+    { name: "CI / CD Pipelines", years: "2.5 yrs" },
   ],
 };
 

@@ -47,6 +47,8 @@
   /* Brand custom colors */
   --color-brand: #C6F432;
   --color-brand-dim: rgba(198,244,50,0.12);
+  --color-brand-coral: #FF5E5B;
+  --color-brand-coral-dim: rgba(255,94,91,0.12);
   --color-surface-1: #111113;
   --color-surface-2: #16161A;
   --color-surface-3: #1E1E22;
@@ -205,5 +207,54 @@
   }
   .link-underline:hover::after {
     width: 100%;
+  }
+
+  /* Cursor border and background glow effects */
+  .cursor-glow-card {
+    position: relative;
+  }
+  .cursor-glow-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: radial-gradient(
+      400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+      rgba(255, 255, 255, 0.12),
+      transparent 40%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 10;
+  }
+  .cursor-glow-card:hover::before {
+    opacity: 1;
+  }
+
+  .cursor-glow-bg {
+    position: relative;
+  }
+  .cursor-glow-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      400px circle at var(--mouse-x, 0px) var(--mouse-y, 0px),
+      var(--glow-color, rgba(198, 244, 50, 0.05)),
+      transparent 40%
+    );
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
+  }
+  .cursor-glow-bg:hover::after {
+    opacity: 1;
   }
 }
