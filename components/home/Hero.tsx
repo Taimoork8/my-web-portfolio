@@ -15,10 +15,42 @@ const trustBadges = [
 ];
 
 const metrics = [
-  { value: "4.5+", label: "Years" },
+  { value: "5+", label: "Years" },
   { value: "30+", label: "Projects" },
   { value: "100%", label: "Remote" },
 ];
+
+import { useRef } from "react";
+
+function Magnetic({ children }: { children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e;
+    const { left, top, width, height } = ref.current?.getBoundingClientRect() || { left: 0, top: 0, width: 0, height: 0 };
+    const x = clientX - (left + width / 2);
+    const y = clientY - (top + height / 2);
+    setPosition({ x: x * 0.25, y: y * 0.25 });
+  };
+
+  const handleMouseLeave = () => {
+    setPosition({ x: 0, y: 0 });
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      animate={{ x: position.x, y: position.y }}
+      transition={{ type: "spring", stiffness: 180, damping: 15, mass: 0.1 }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 
 function DashboardVisual() {
   const [activeTab, setActiveTab] = useState<'bleiot' | 'medicalsync'>('bleiot');
@@ -412,21 +444,25 @@ export default function Hero() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="flex flex-wrap gap-3 mb-10"
+              className="flex flex-wrap items-center gap-4 mb-10"
             >
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#C6F432] text-[#0A0A0B] text-sm font-semibold hover:bg-[#d4fc4a] transition-all hover:shadow-[0_0_20px_rgba(198,244,50,0.3)] active:scale-95"
-              >
-                Start a Project
-                <ArrowUpRight className="w-4 h-4" />
-              </Link>
-              <Link
-                href="/case-studies"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/6 border border-white/10 text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-all active:scale-95"
-              >
-                View Case Studies
-              </Link>
+              <Magnetic>
+                <Link
+                  href="/contact"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#C6F432] text-[#0A0A0B] text-sm font-semibold hover:bg-[#d4fc4a] transition-all hover:shadow-[0_0_20px_rgba(198,244,50,0.3)] active:scale-95"
+                >
+                  Start a Project
+                  <ArrowUpRight className="w-4 h-4" />
+                </Link>
+              </Magnetic>
+              <Magnetic>
+                <Link
+                  href="/case-studies"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white/6 border border-white/10 text-sm font-medium text-white/80 hover:bg-white/10 hover:text-white transition-all active:scale-95"
+                >
+                  View Case Studies
+                </Link>
+              </Magnetic>
             </motion.div>
 
             {/* Metrics */}

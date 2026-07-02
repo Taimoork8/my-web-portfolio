@@ -74,8 +74,63 @@ const items = [
   },
 ];
 
+import { useState, useRef } from "react";
+
+function TiltCard({ item, i, handleMouseMove, children }: { item: typeof items[0], i: number, handleMouseMove: (e: any) => void, children: React.ReactNode }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [rotateX, setRotateX] = useState(0);
+  const [rotateY, setRotateY] = useState(0);
+
+  const onMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!ref.current) return;
+    const rect = ref.current.getBoundingClientRect();
+    const width = rect.width;
+    const height = rect.height;
+    const mouseX = e.clientX - rect.left - width / 2;
+    const mouseY = e.clientY - rect.top - height / 2;
+    
+    const rX = -(mouseY / height) * 10; 
+    const rY = (mouseX / width) * 10; 
+    
+    setRotateX(rX);
+    setRotateY(rY);
+    handleMouseMove(e);
+  };
+
+  const onMouseLeave = () => {
+    setRotateX(0);
+    setRotateY(0);
+  };
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, delay: i * 0.08 }}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+      animate={{
+        rotateX: rotateX,
+        rotateY: rotateY,
+        transformPerspective: 1000,
+      }}
+      className={`group cursor-glow-card cursor-glow-bg relative p-6 rounded-2xl bg-[#111113] border border-white/8 hover:border-white/14 transition-all duration-200 cursor-default overflow-hidden ${item.gridClass}`}
+      style={{
+        "--glow-color": `${item.accent}06`,
+        transformStyle: "preserve-3d",
+      } as any}
+    >
+      <div style={{ transform: "translateZ(20px)", transformStyle: "preserve-3d" }} className="relative z-10 flex flex-col h-full justify-between">
+        {children}
+      </div>
+    </motion.div>
+  );
+}
+
 export default function WhatIBuild() {
-  const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
@@ -103,41 +158,29 @@ export default function WhatIBuild() {
         </motion.div>
 
         {/* Bento Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" style={{ perspective: "1000px" }}>
           {items.map((item, i) => {
             const Icon = item.icon;
             return (
-              <motion.div
-                key={item.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
-                whileHover={{ y: -6, scale: 1.015, transition: { type: "spring", stiffness: 300, damping: 20 } }}
-                onMouseMove={handleMouseMove}
-                className={`group cursor-glow-card cursor-glow-bg relative p-6 rounded-2xl bg-[#111113] border border-white/8 hover:border-white/14 transition-all duration-300 cursor-default overflow-hidden ${item.gridClass}`}
-                style={{ "--glow-color": `${item.accent}06` } as any}
-              >
-                <div className="relative z-10 flex flex-col h-full justify-between">
-                  <div>
-                    {/* Icon */}
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
-                      style={{ background: `${item.accent}14`, border: `1px solid ${item.accent}20` }}
-                    >
-                      <Icon className="w-5 h-5" style={{ color: item.accent }} />
-                    </div>
-
-                    <h3 className="font-display text-base font-semibold text-white mb-2 group-hover:text-white transition-colors">
-                      {item.title}
-                    </h3>
-                    <p className="text-sm text-white/45 leading-relaxed max-w-lg">
-                      {item.description}
-                    </p>
+              <TiltCard key={item.title} item={item} i={i} handleMouseMove={handleMouseMove}>
+                <div>
+                  {/* Icon */}
+                  <div
+                    className="w-10 h-10 rounded-xl flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110"
+                    style={{ background: `${item.accent}14`, border: `1px solid ${item.accent}20` }}
+                  >
+                    <Icon className="w-5 h-5" style={{ color: item.accent }} />
                   </div>
-                  {item.meta}
+
+                  <h3 className="font-display text-base font-semibold text-white mb-2 group-hover:text-white transition-colors">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm text-white/45 leading-relaxed max-w-lg">
+                    {item.description}
+                  </p>
                 </div>
-              </motion.div>
+                {item.meta}
+              </TiltCard>
             );
           })}
         </div>
@@ -145,3 +188,4 @@ export default function WhatIBuild() {
     </section>
   );
 }
+

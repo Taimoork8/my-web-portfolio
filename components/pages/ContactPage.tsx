@@ -80,59 +80,71 @@ export default function ContactPage() {
   }
 
   const inputClass =
-    "w-full bg-[#111113] border border-white/10 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/25 focus:outline-none focus:border-[#C6F432]/40 focus:ring-1 focus:ring-[#C6F432]/20 transition-all";
+    "w-full bg-white/4 border border-white/8 rounded-xl px-4 py-3 text-sm text-white placeholder:text-white/20 focus:outline-none focus:border-[#C6F432] focus:ring-1 focus:ring-[#C6F432]/30 focus:bg-[#16161a]/60 transition-all duration-300";
 
   return (
-    <div className="min-h-screen pt-28 pb-20">
-      <div className="max-w-5xl mx-auto px-6">
+    <div className="min-h-screen pt-28 pb-20 relative">
+      {/* Glow ambient background elements */}
+      <div className="absolute top-1/4 left-1/4 w-[300px] h-[300px] bg-[#C6F432]/3 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[250px] h-[250px] bg-[#FF5E5B]/2 rounded-full blur-[90px] pointer-events-none" />
+
+      <div className="max-w-5xl mx-auto px-6 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="mb-12"
         >
           <p className="text-xs font-semibold text-white/30 uppercase tracking-[0.2em] mb-5">Contact</p>
           <h1 className="font-display text-4xl sm:text-5xl font-bold text-white leading-tight mb-5">
             Let&apos;s build something together
           </h1>
           <div className="flex items-center gap-2 text-sm text-white/45">
-            <Clock className="w-3.5 h-3.5" />
+            <Clock className="w-3.5 h-3.5 text-[#C6F432] animate-pulse" />
             Usually responds within 24 hours · Remote worldwide
           </div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-5 gap-10">
+        <div className="grid lg:grid-cols-5 gap-8">
           {/* Left: Form */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="lg:col-span-3"
+            className="lg:col-span-3 glass-premium p-6 sm:p-8 rounded-2xl border border-white/8 relative"
           >
             {status === "done" ? (
-              <div className="h-full flex flex-col items-center justify-center py-20 text-center">
-                <CheckCircle className="w-12 h-12 text-[#C6F432] mb-4" />
+              <motion.div 
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="h-full flex flex-col items-center justify-center py-20 text-center"
+              >
+                <CheckCircle className="w-12 h-12 text-[#C6F432] mb-4 animate-bounce" />
                 <h2 className="font-display text-2xl font-bold text-white mb-2">Message sent!</h2>
                 <p className="text-sm text-white/45">
                   I&apos;ll get back to you within 24 hours.
                 </p>
-              </div>
+              </motion.div>
             ) : status === "error" ? (
-              <div className="h-full flex flex-col items-center justify-center py-20 text-center">
+              <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className="h-full flex flex-col items-center justify-center py-20 text-center"
+              >
                 <p className="text-sm text-red-400 mb-3">Something went wrong. Please try again or email me directly.</p>
                 <button
                   onClick={() => setStatus("idle")}
-                  className="text-sm text-[#C6F432] underline underline-offset-2"
+                  className="text-sm text-[#C6F432] underline underline-offset-2 hover:text-[#d4fc4a] transition-colors"
                 >
                   Try again
                 </button>
-              </div>
+              </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs text-white/40 mb-1.5 ml-0.5">Your Name</label>
+                    <label className="block text-xs font-semibold text-white/40 mb-1.5 ml-0.5 uppercase tracking-wider">Your Name</label>
                     <input
                       name="name"
                       value={form.name}
@@ -143,7 +155,7 @@ export default function ContactPage() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs text-white/40 mb-1.5 ml-0.5">Email</label>
+                    <label className="block text-xs font-semibold text-white/40 mb-1.5 ml-0.5 uppercase tracking-wider">Email</label>
                     <input
                       name="email"
                       type="email"
@@ -157,26 +169,33 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs text-white/40 mb-1.5 ml-0.5">Project Type</label>
-                  <select
-                    name="project"
-                    value={form.project}
-                    onChange={handleChange}
-                    required
-                    className={inputClass}
-                  >
-                    <option value="" disabled>Select a project type</option>
-                    <option value="saas">SaaS Platform</option>
-                    <option value="mobile">Mobile App</option>
-                    <option value="ai">AI / Automation</option>
-                    <option value="mvp">MVP Development</option>
-                    <option value="crm">CRM / Dashboard</option>
-                    <option value="other">Other</option>
-                  </select>
+                  <label className="block text-xs font-semibold text-white/40 mb-1.5 ml-0.5 uppercase tracking-wider">Project Type</label>
+                  <div className="relative">
+                    <select
+                      name="project"
+                      value={form.project}
+                      onChange={handleChange}
+                      required
+                      className={`${inputClass} appearance-none cursor-pointer`}
+                    >
+                      <option value="" disabled className="bg-[#111113]">Select a project type</option>
+                      <option value="saas" className="bg-[#111113]">SaaS Platform</option>
+                      <option value="mobile" className="bg-[#111113]">Mobile App</option>
+                      <option value="ai" className="bg-[#111113]">AI / Automation</option>
+                      <option value="mvp" className="bg-[#111113]">MVP Development</option>
+                      <option value="crm" className="bg-[#111113]">CRM / Dashboard</option>
+                      <option value="other" className="bg-[#111113]">Other</option>
+                    </select>
+                    <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-white/40">
+                      <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                        <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                      </svg>
+                    </div>
+                  </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs text-white/40 mb-1.5 ml-0.5">Message</label>
+                  <label className="block text-xs font-semibold text-white/40 mb-1.5 ml-0.5 uppercase tracking-wider">Message</label>
                   <textarea
                     name="message"
                     value={form.message}
@@ -188,14 +207,16 @@ export default function ContactPage() {
                   />
                 </div>
 
-                <button
+                <motion.button
                   type="submit"
                   disabled={status === "submitting"}
-                  className="w-full flex items-center justify-center gap-2 py-3.5 rounded-xl bg-[#C6F432] text-[#0A0A0B] text-sm font-semibold hover:bg-[#d4fc4a] disabled:opacity-60 disabled:cursor-not-allowed transition-all hover:shadow-[0_0_20px_rgba(198,244,50,0.3)] active:scale-[0.99]"
+                  whileHover={{ scale: 1.01 }}
+                  whileTap={{ scale: 0.99 }}
+                  className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-[#C6F432] text-[#0A0A0B] text-sm font-bold hover:bg-[#d4fc4a] disabled:opacity-60 disabled:cursor-not-allowed transition-all hover:shadow-[0_0_30px_rgba(198,244,50,0.35)] cursor-pointer"
                 >
                   {status === "submitting" ? "Sending..." : "Send Message"}
                   <ArrowUpRight className="w-4 h-4" />
-                </button>
+                </motion.button>
               </form>
             )}
           </motion.div>
@@ -205,7 +226,7 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="lg:col-span-2 space-y-3"
+            className="lg:col-span-2 space-y-4"
           >
             {contactOptions.map(({ icon: Icon, label, value, href, description }) => (
               <a
@@ -213,27 +234,28 @@ export default function ContactPage() {
                 href={href}
                 target={href.startsWith("http") ? "_blank" : undefined}
                 rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="group flex items-start gap-4 p-4 rounded-xl bg-[#111113] border border-white/8 hover:border-white/14 transition-all"
+                className="group flex items-start gap-4 p-4 rounded-xl bg-white/3 border border-white/6 hover:border-white/12 hover:bg-white/5 transition-all duration-300"
               >
-                <div className="w-9 h-9 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center flex-shrink-0 group-hover:bg-[#C6F432]/10 group-hover:border-[#C6F432]/20 transition-all">
+                <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/8 flex items-center justify-center flex-shrink-0 group-hover:bg-[#C6F432]/10 group-hover:border-[#C6F432]/35 transition-all duration-300">
                   <Icon className="w-4 h-4 text-white/40 group-hover:text-[#C6F432] transition-colors" />
                 </div>
                 <div className="min-w-0">
                   <p className="text-sm font-semibold text-white/80 group-hover:text-white transition-colors">{label}</p>
-                  <p className="text-xs text-white/35 truncate">{value}</p>
-                  <p className="text-[11px] text-white/25 mt-0.5">{description}</p>
+                  <p className="text-xs text-white/40 truncate">{value}</p>
+                  <p className="text-[11px] text-white/30 mt-0.5">{description}</p>
                 </div>
               </a>
             ))}
 
             {/* Availability card */}
-            <div className="p-4 rounded-xl bg-[#C6F432]/6 border border-[#C6F432]/15">
-              <div className="flex items-center gap-2 mb-1.5">
+            <div className="p-5 rounded-xl bg-[#C6F432]/8 border border-[#C6F432]/15 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-[#C6F432]/3 rounded-full blur-xl pointer-events-none" />
+              <div className="flex items-center gap-2 mb-2">
                 <span className="w-2 h-2 rounded-full bg-[#C6F432] animate-pulse" />
-                <span className="text-sm font-semibold text-[#C6F432]">Available for work</span>
+                <span className="text-sm font-bold text-[#C6F432] uppercase tracking-wider">Available for work</span>
               </div>
-              <p className="text-xs text-white/45">
-                Currently taking on new SaaS, mobile, and AI projects. Remote worldwide.
+              <p className="text-xs text-white/50 leading-relaxed">
+                Currently taking on new SaaS, mobile app, and AI projects. Remote worldwide.
               </p>
             </div>
           </motion.div>

@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s | Taimoor Khan",
   },
   description:
-    "Full-stack product engineer building scalable SaaS platforms, AI systems, mobile apps, and automation tools for startups and businesses. 4.5+ years with Flutter, Django, Python, and Next.js.",
+    "Full-stack product engineer building scalable SaaS platforms, AI systems, mobile apps, and automation tools for startups and businesses. 5+ years with Flutter, Django, Python, and Next.js.",
   keywords: [
     "SaaS developer",
     "Flutter developer",

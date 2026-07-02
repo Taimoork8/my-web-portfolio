@@ -257,4 +257,45 @@
   .cursor-glow-bg:hover::after {
     opacity: 1;
   }
+
+  /* 3D Perspective and premium animations */
+  .perspective-1000 {
+    perspective: 1000px;
+    transform-style: preserve-3d;
+  }
+  
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  /* Glow effects */
+  .glow-lime-strong {
+    box-shadow: 0 0 40px rgba(198,244,50,0.25), 0 0 80px rgba(198,244,50,0.1);
+  }
+
+  .glow-coral-strong {
+    box-shadow: 0 0 40px rgba(255,94,91,0.25), 0 0 80px rgba(255,94,91,0.1);
+  }
+
+  .glass-premium {
+    background: rgba(17, 17, 19, 0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .glass-premium-hover {
+    transition: all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+  
+  .glass-premium-hover:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 12px 40px 0 rgba(0, 0, 0, 0.5);
+  }
 }
+

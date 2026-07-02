@@ -108,7 +108,7 @@ export default function AboutPage() {
 
           <div className="space-y-4 text-white/60 text-base leading-relaxed max-w-2xl">
             <p>
-              I&apos;m a full-stack product engineer with 4.5+ years of experience building
+              I&apos;m a full-stack product engineer with 5+ years of experience building
               SaaS platforms, AI systems, mobile apps, and automation tools. My work spans
               everything from early-stage MVP development to production systems handling
               thousands of users.

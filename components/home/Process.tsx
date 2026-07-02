@@ -39,9 +39,9 @@ export default function Process() {
         <div className="relative">
           {/* Connecting line background (desktop) */}
           <div className="hidden lg:block absolute top-5 left-0 right-0 h-px bg-white/5" />
-          
+
           {/* Active progress line (desktop) */}
-          <motion.div 
+          <motion.div
             style={{ scaleX }}
             className="hidden lg:block absolute top-5 left-0 right-0 h-px bg-gradient-to-r from-[#C6F432] via-[#6DE7FF] to-[#C6F432] origin-left z-0"
           />
@@ -60,9 +60,11 @@ export default function Process() {
                 {/* Step number + dot */}
                 <div className="flex items-center gap-3 mb-4">
                   <div className="relative">
-                    <div className="w-10 h-10 rounded-full bg-[#111113]/90 border border-white/8 group-hover:border-[#C6F432] group-hover:bg-[#C6F432]/10 group-hover:shadow-[0_0_15px_rgba(198,244,50,0.3)] backdrop-blur-sm flex items-center justify-center transition-all duration-300">
+                    <div className="absolute inset-0 rounded-full bg-[#C6F432]/20 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    <div className="w-10 h-10 rounded-full bg-[#111113]/90 border border-white/8 group-hover:border-[#C6F432] group-hover:bg-[#C6F432]/10 group-hover:shadow-[0_0_15px_rgba(198,244,50,0.3)] backdrop-blur-sm flex items-center justify-center transition-all duration-300 relative z-10">
                       <span className="text-xs font-mono text-[#C6F432] group-hover:text-white font-semibold transition-colors duration-300">{step.step}</span>
                     </div>
+                    <div className="absolute inset-0 -m-1 rounded-full border border-[#C6F432]/0 group-hover:border-[#C6F432]/35 scale-90 group-hover:scale-100 transition-all duration-500 pointer-events-none" />
                   </div>
                 </div>
 

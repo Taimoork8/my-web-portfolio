@@ -42,7 +42,12 @@ export default function TechStack() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
                 transition={{ duration: 0.55, delay: catIndex * 0.1 }}
-                className="p-6 rounded-2xl bg-[#111113] border border-white/8 hover:border-white/12 transition-all duration-300"
+                whileHover={{
+                  y: -6,
+                  borderColor: `${color}40`,
+                  boxShadow: `0 12px 30px -10px ${color}18`,
+                }}
+                className="p-6 rounded-2xl bg-[#111113] border border-white/8 transition-all duration-300"
               >
                 <div className="flex items-center gap-2 mb-5">
                   <div className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: color }} />
@@ -59,7 +64,11 @@ export default function TechStack() {
                       whileInView={{ opacity: 1, x: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: catIndex * 0.1 + i * 0.04 + 0.15 }}
-                      className="flex items-center justify-between p-2 rounded-lg hover:bg-white/3 border border-transparent hover:border-white/5 transition-all duration-200 group cursor-default"
+                      whileHover={{
+                        x: 4,
+                        backgroundColor: "rgba(255,255,255,0.03)",
+                      }}
+                      className="flex items-center justify-between p-2 rounded-lg border border-transparent hover:border-white/5 transition-all duration-200 group cursor-default"
                     >
                       <span className="text-sm text-white/70 group-hover:text-white transition-colors">
                         {tech.name}

@@ -158,23 +158,50 @@ export const projects = [
     ],
     color: "#a855f7",
   },
+  {
+    id: "django-upgrade",
+    slug: "django-upgrade",
+    category: "System Upgrade",
+    title: "Django Enterprise Legacy Upgrade",
+    tagline: "Upgraded legacy Django 2.x platform to Django 5.x",
+    description:
+      "A complete modernization of an enterprise application, migrating the entire legacy system from Django 2.x to Django 5.x, updating dependencies, query optimizations, and database structures.",
+    problem:
+      "A business was locked in Django 2.x, facing security vulnerabilities, deprecated package conflicts, slow query performance, and compatibility blocks with modern Python runtimes.",
+    solution:
+      "A phased migration strategy that refactored deprecated APIs, upgraded custom database routing, resolved packages compatibility issues, and optimized SQL transactions to work smoothly with Django 5.x.",
+    features: [
+      "Zero-downtime database migration path",
+      "Refactoring deprecated ORM API query layers",
+      "Upgrade to Python 3.12 compatibility",
+      "Implementation of modern middleware & security headers",
+      "CI/CD pipeline upgrade with automated test suites",
+    ],
+    stack: ["Django 5.x", "Python 3.12", "PostgreSQL", "CI/CD", "Docker"],
+    metrics: [
+      { label: "Django Version", value: "2.x → 5.x" },
+      { label: "Security Risk Resolved", value: "100%" },
+      { label: "Performance Gain", value: "+35%" },
+    ],
+    color: "#6DE7FF",
+  },
 ];
 
 export const techStack = {
   Frontend: [
-    { name: "Flutter", years: "4.5 yrs" },
-    { name: "Dart", years: "4.5 yrs" },
+    { name: "Flutter", years: "5 yrs" },
+    { name: "Dart", years: "5 yrs" },
     { name: "Next.js", years: "2 yrs" },
     { name: "React", years: "2 yrs" },
     { name: "TypeScript", years: "2 yrs" },
-    { name: "HTML5 & CSS3", years: "4.5 yrs" },
+    { name: "HTML5 & CSS3", years: "5 yrs" },
   ],
   Backend: [
-    { name: "Django", years: "4 yrs" },
-    { name: "Python", years: "4.5 yrs" },
+    { name: "Django", years: "5 yrs" },
+    { name: "Python", years: "5 yrs" },
     { name: "PostgreSQL", years: "3 yrs" },
     { name: "Firebase", years: "3 yrs" },
-    { name: "REST APIs", years: "4.5 yrs" },
+    { name: "REST APIs", years: "5 yrs" },
     { name: "Celery & Redis", years: "2 yrs" },
   ],
   Systems: [

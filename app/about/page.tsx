@@ -4,7 +4,7 @@ import AboutPage from "@/components/pages/AboutPage";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Full-stack product engineer with 4.5+ years building SaaS platforms, AI systems, and mobile apps. Based in Islamabad, working remotely worldwide.",
+    "Full-stack product engineer with 5+ years building SaaS platforms, AI systems, and mobile apps. Based in Islamabad, working remotely worldwide.",
 };
 
 export default function About() {

@@ -76,7 +76,7 @@ export default function CTA() {
               transition={{ delay: 0.4 }}
               className="mt-8 text-xs text-white/25"
             >
-              Usually responds within 24 hours · Remote worldwide · 4.5+ years experience
+              Usually responds within 24 hours · Remote worldwide · 5+ years experience
             </motion.p>
           </div>
         </motion.div>
