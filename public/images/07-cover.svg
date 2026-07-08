@@ -1,0 +1,26 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b1420"/>
+      <stop offset="100%" stop-color="#152238"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg7)"/>
+  <circle cx="1060" cy="140" r="190" fill="#f97316" opacity="0.08"/>
+
+  <g transform="translate(860,290)">
+    <rect x="0" y="0" width="90" height="60" rx="6" fill="#f97316" opacity="0.9"/>
+    <text x="45" y="35" font-family="Helvetica" font-size="12" fill="#1c1917" text-anchor="middle" font-weight="700">EC2/ECS</text>
+    <rect x="120" y="0" width="90" height="60" rx="6" fill="#38bdf8" opacity="0.9"/>
+    <text x="165" y="35" font-family="Helvetica" font-size="12" fill="#0f172a" text-anchor="middle" font-weight="700">RDS</text>
+    <rect x="240" y="0" width="90" height="60" rx="6" fill="#4ade80" opacity="0.9"/>
+    <text x="285" y="35" font-family="Helvetica" font-size="12" fill="#052e16" text-anchor="middle" font-weight="700">S3</text>
+  </g>
+
+  <text x="80" y="220" font-family="Helvetica, Arial, sans-serif" font-size="52" fill="#f8fafc" font-weight="800">Deploying Django</text>
+  <text x="80" y="290" font-family="Helvetica, Arial, sans-serif" font-size="52" fill="#f8fafc" font-weight="800">on AWS</text>
+  <text x="80" y="335" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#94a3b8">Elastic Beanstalk vs ECS, and the config that trips people up</text>
+
+  <rect x="80" y="500" width="14" height="14" fill="#f97316"/>
+  <text x="104" y="512" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#e2e8f0" font-weight="600">tiakha.dev</text>
+</svg>

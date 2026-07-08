@@ -1,0 +1,41 @@
+<svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="380" fill="#ffffff"/>
+  <style>
+    .st { font-family: Helvetica, Arial, sans-serif; font-size: 14px; fill: #0f172a; font-weight: 600; }
+    .sm { font-family: Helvetica, Arial, sans-serif; font-size: 12px; fill: #475569; }
+  </style>
+  <defs>
+    <marker id="ar6" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+
+  <rect x="30" y="30" width="200" height="60" rx="10" fill="#ffedd5" stroke="#fb923c" stroke-width="2"/>
+  <text x="130" y="65" class="st" text-anchor="middle">Build phase</text>
+
+  <rect x="270" y="30" width="200" height="60" rx="10" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+  <text x="370" y="65" class="st" text-anchor="middle">Layout phase</text>
+
+  <rect x="510" y="30" width="200" height="60" rx="10" fill="#fee2e2" stroke="#ef4444" stroke-width="2"/>
+  <text x="610" y="65" class="st" text-anchor="middle">Paint phase</text>
+
+  <rect x="750" y="30" width="130" height="60" rx="10" fill="#dcfce7" stroke="#22c55e" stroke-width="2"/>
+  <text x="815" y="65" class="st" text-anchor="middle">Raster / GPU</text>
+
+  <line x1="230" y1="60" x2="270" y2="60" stroke="#0f172a" stroke-width="2" marker-end="url(#ar6)"/>
+  <line x1="470" y1="60" x2="510" y2="60" stroke="#0f172a" stroke-width="2" marker-end="url(#ar6)"/>
+  <line x1="710" y1="60" x2="750" y2="60" stroke="#0f172a" stroke-width="2" marker-end="url(#ar6)"/>
+
+  <text x="30" y="130" class="sm">const constructors skip rebuild</text>
+  <text x="270" y="130" class="sm">RepaintBoundary isolates repaint</text>
+  <text x="510" y="130" class="sm">Opacity/clip = expensive paint</text>
+  <text x="750" y="130" class="sm">Shader compile jank</text>
+
+  <rect x="30" y="180" width="850" height="160" rx="10" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1"/>
+  <text x="50" y="210" class="st">DevTools checklist</text>
+  <text x="50" y="235" class="sm">1. Performance overlay: watch for red bars in the UI thread graph</text>
+  <text x="50" y="257" class="sm">2. Widget rebuild profiler: find widgets rebuilding every frame unnecessarily</text>
+  <text x="50" y="279" class="sm">3. Timeline view: identify long build/layout/paint phases per frame</text>
+  <text x="50" y="301" class="sm">4. Memory tab: check for retained image caches and leaked controllers</text>
+  <text x="50" y="323" class="sm">5. Impeller shader warm-up: precompile shaders to avoid first-run jank</text>
+</svg>

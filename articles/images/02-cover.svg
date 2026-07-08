@@ -1,0 +1,24 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c1420"/>
+      <stop offset="100%" stop-color="#1e293b"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg2)"/>
+  <circle cx="1050" cy="150" r="200" fill="#a78bfa" opacity="0.08"/>
+
+  <!-- bluetooth-esque signal icon -->
+  <g transform="translate(900,330)" stroke="#a78bfa" stroke-width="6" fill="none" stroke-linecap="round">
+    <path d="M0,-90 L45,-45 L-25,10 L45,65 L0,110 L0,-90"/>
+    <circle cx="0" cy="10" r="140" stroke="#a78bfa" stroke-width="2" opacity="0.35"/>
+    <circle cx="0" cy="10" r="180" stroke="#a78bfa" stroke-width="2" opacity="0.2"/>
+  </g>
+
+  <text x="80" y="230" font-family="Helvetica, Arial, sans-serif" font-size="56" fill="#f8fafc" font-weight="800">Flutter BLE</text>
+  <text x="80" y="300" font-family="Helvetica, Arial, sans-serif" font-size="56" fill="#f8fafc" font-weight="800">Guide</text>
+  <text x="80" y="345" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#94a3b8">Scanning, connecting, and streaming from real BLE devices</text>
+
+  <rect x="80" y="500" width="14" height="14" fill="#a78bfa"/>
+  <text x="104" y="512" font-family="Helvetica, Arial, sans-serif" font-size="22" fill="#e2e8f0" font-weight="600">tiakha.dev</text>
+</svg>

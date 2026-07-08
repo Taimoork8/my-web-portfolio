@@ -1,0 +1,54 @@
+<svg viewBox="0 0 900 520" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="520" fill="#ffffff"/>
+  <style>
+    .lbl { font-family: Helvetica, Arial, sans-serif; font-size: 16px; fill: #0f172a; font-weight: 600; }
+    .sub { font-family: Helvetica, Arial, sans-serif; font-size: 12px; fill: #475569; }
+    .box { stroke-width: 2; rx: 10; }
+  </style>
+
+  <!-- Presentation layer -->
+  <rect x="60" y="30" width="780" height="110" fill="#e0f2fe" stroke="#38bdf8" class="box"/>
+  <text x="80" y="55" class="lbl">Presentation Layer</text>
+  <text x="80" y="75" class="sub">Widgets, Pages, State Management (Bloc / Riverpod / Provider)</text>
+  <rect x="90" y="90" width="150" height="34" fill="#ffffff" stroke="#38bdf8"/>
+  <text x="165" y="112" class="sub" text-anchor="middle">HomeScreen</text>
+  <rect x="270" y="90" width="150" height="34" fill="#ffffff" stroke="#38bdf8"/>
+  <text x="345" y="112" class="sub" text-anchor="middle">HomeCubit</text>
+  <rect x="450" y="90" width="150" height="34" fill="#ffffff" stroke="#38bdf8"/>
+  <text x="525" y="112" class="sub" text-anchor="middle">HomeState</text>
+
+  <!-- arrow -->
+  <line x1="450" y1="140" x2="450" y2="180" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Domain layer -->
+  <rect x="60" y="190" width="780" height="110" fill="#dcfce7" stroke="#22c55e" class="box"/>
+  <text x="80" y="215" class="lbl">Domain Layer (pure Dart, no Flutter imports)</text>
+  <text x="80" y="235" class="sub">Entities, Use Cases, Repository Interfaces</text>
+  <rect x="90" y="250" width="150" height="34" fill="#ffffff" stroke="#22c55e"/>
+  <text x="165" y="272" class="sub" text-anchor="middle">GetUserUseCase</text>
+  <rect x="270" y="250" width="150" height="34" fill="#ffffff" stroke="#22c55e"/>
+  <text x="345" y="272" class="sub" text-anchor="middle">UserEntity</text>
+  <rect x="450" y="250" width="220" height="34" fill="#ffffff" stroke="#22c55e"/>
+  <text x="560" y="272" class="sub" text-anchor="middle">UserRepository (abstract)</text>
+
+  <line x1="450" y1="300" x2="450" y2="340" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Data layer -->
+  <rect x="60" y="350" width="780" height="110" fill="#fef3c7" stroke="#f59e0b" class="box"/>
+  <text x="80" y="375" class="lbl">Data Layer</text>
+  <text x="80" y="395" class="sub">Repository Implementations, Remote/Local Data Sources, DTOs</text>
+  <rect x="90" y="410" width="180" height="34" fill="#ffffff" stroke="#f59e0b"/>
+  <text x="180" y="432" class="sub" text-anchor="middle">UserRepositoryImpl</text>
+  <rect x="290" y="410" width="180" height="34" fill="#ffffff" stroke="#f59e0b"/>
+  <text x="380" y="432" class="sub" text-anchor="middle">UserRemoteDataSource</text>
+  <rect x="490" y="410" width="180" height="34" fill="#ffffff" stroke="#f59e0b"/>
+  <text x="580" y="432" class="sub" text-anchor="middle">REST API / SDK</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L6,3 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+
+  <text x="80" y="500" class="sub">Dependencies point inward: Presentation → Domain ← Data. Domain never depends on outer layers.</text>
+</svg>
