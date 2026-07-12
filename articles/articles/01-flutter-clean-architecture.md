@@ -2,7 +2,7 @@
 title: "Flutter Clean Architecture: A Practical Guide That Actually Scales"
 slug: flutter-clean-architecture
 description: "How to structure a Flutter app into presentation, domain, and data layers so it stays testable and maintainable as the codebase grows."
-date: 2026-07-08
+date: 2026-07-01
 tags: [flutter, architecture, dart, mobile]
 cover: images/01-cover.svg
 ---

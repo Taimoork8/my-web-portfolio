@@ -2,7 +2,7 @@
 title: "Deploying Django on AWS: Elastic Beanstalk vs ECS, and the Config That Trips People Up"
 slug: deploying-django-on-aws
 description: "A production-minded walkthrough of deploying Django on AWS — choosing between Elastic Beanstalk and ECS Fargate, static files, migrations, and the settings mistakes that break deploys."
-date: 2026-07-08
+date: 2026-07-07
 tags: [django, aws, devops, deployment, python]
 cover: images/07-cover.svg
 ---

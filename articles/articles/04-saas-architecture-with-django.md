@@ -2,7 +2,7 @@
 title: "SaaS Architecture with Django: Multi-Tenancy, Billing, and Background Jobs"
 slug: saas-architecture-with-django
 description: "How to structure a multi-tenant Django SaaS product — picking a tenancy model, wiring up Stripe billing, and keeping background jobs from becoming the app's weakest link."
-date: 2026-07-08
+date: 2026-07-04
 tags: [django, saas, architecture, python, backend]
 cover: images/04-cover.svg
 ---

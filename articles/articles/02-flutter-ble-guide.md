@@ -2,7 +2,7 @@
 title: "The Flutter BLE Guide: Scanning, Connecting, and Streaming From Real Devices"
 slug: flutter-ble-guide
 description: "A practical walkthrough of Bluetooth Low Energy in Flutter — package choice, connection lifecycle, and the reconnect logic real hardware forces you to write."
-date: 2026-07-08
+date: 2026-07-02
 tags: [flutter, ble, bluetooth, iot, mobile]
 cover: images/02-cover.svg
 ---

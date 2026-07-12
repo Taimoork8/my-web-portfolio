@@ -2,7 +2,7 @@
 title: "Django REST API Best Practices That Actually Survive Production"
 slug: django-rest-api-best-practices
 description: "Serializer patterns, permission design, pagination, and the N+1 queries that will quietly wreck your API's performance if you don't catch them early."
-date: 2026-07-08
+date: 2026-07-03
 tags: [django, drf, python, api, backend]
 cover: images/03-cover.svg
 ---

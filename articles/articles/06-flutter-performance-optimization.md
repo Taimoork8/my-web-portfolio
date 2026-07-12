@@ -2,7 +2,7 @@
 title: "Flutter Performance Optimization: Finding and Fixing Jank Before Users Notice"
 slug: flutter-performance-optimization
 description: "How to diagnose and fix real Flutter performance problems using DevTools — rebuild storms, expensive paint operations, and shader compilation jank."
-date: 2026-07-08
+date: 2026-07-06
 tags: [flutter, performance, dart, mobile, devtools]
 cover: images/06-cover.svg
 ---

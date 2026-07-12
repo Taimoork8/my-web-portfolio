@@ -1,0 +1,46 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg10" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#022c22"/>
+      <stop offset="50%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+    <linearGradient id="glow10" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#C6F432"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg10)"/>
+  
+  <!-- Glowing subtle patterns -->
+  <circle cx="1100" cy="315" r="280" fill="url(#glow10)" opacity="0.06" filter="blur(60px)"/>
+  <circle cx="200" cy="100" r="180" fill="#10b981" opacity="0.04" filter="blur(40px)"/>
+
+  <!-- Django style code lines / patterns -->
+  <g opacity="0.1" stroke="#ffffff" stroke-width="2" fill="none">
+    <path d="M900,100 L1050,100 M900,150 L1120,150 M900,200 L980,200 M900,250 L1080,250 M900,300 L1020,300" stroke-linecap="round"/>
+    <path d="M850,80 L850,340" stroke="#10b981" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <!-- Upward Arrow / Upgrade Icon -->
+  <g transform="translate(930, 240) scale(1.2)" stroke="#C6F432" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Circle wrapper -->
+    <circle cx="30" cy="30" r="80" stroke="#10b981" stroke-width="2.5" opacity="0.4"/>
+    <!-- Rocket or Chevron upward -->
+    <path d="M-10,40 L30,0 L70,40" stroke-width="8"/>
+    <path d="M-10,65 L30,25 L70,65" stroke-width="5" opacity="0.6"/>
+  </g>
+
+  <!-- Typography -->
+  <text x="80" y="210" font-family="system-ui, -apple-system, sans-serif" font-size="54" fill="#ffffff" font-weight="900" letter-spacing="-0.02em">The Django</text>
+  <text x="80" y="275" font-family="system-ui, -apple-system, sans-serif" font-size="54" fill="#C6F432" font-weight="900" letter-spacing="-0.02em">Upgrade Playbook</text>
+  
+  <text x="80" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="22" fill="#94a3b8" font-weight="400" width="600">
+    <tspan x="80" dy="0">Safe production upgrades, deprecation warning audits,</tspan>
+    <tspan x="80" dy="32">dependency resolution, and zero-downtime deployments.</tspan>
+  </text>
+
+  <!-- Footer Branding -->
+  <rect x="80" y="500" width="16" height="16" rx="4" fill="#C6F432"/>
+  <text x="108" y="514" font-family="system-ui, -apple-system, sans-serif" font-size="20" fill="#94a3b8" font-weight="600">tiakha.dev</text>
+</svg>

@@ -1,0 +1,67 @@
+<svg viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg">
+  <rect width="900" height="460" fill="#ffffff" rx="16"/>
+  <style>
+    .title { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; fill: #0f172a; font-weight: 700; }
+    .label { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; fill: #1e293b; font-weight: 600; }
+    .desc { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; fill: #64748b; }
+    .num { font-family: monospace; font-size: 18px; fill: #0f172a; font-weight: bold; }
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 z" fill="#0f172a"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="40" y="40" class="title">Zero-Downtime Django Upgrade Workflow</text>
+
+  <!-- Step 1 -->
+  <rect x="40" y="120" width="170" height="200" rx="12" fill="#f0fdf4" stroke="#16a34a" stroke-width="2"/>
+  <circle cx="125" cy="165" r="22" fill="#dcfce7"/>
+  <text x="125" y="171" class="num" text-anchor="middle">1</text>
+  <text x="125" y="215" class="label" text-anchor="middle">Audit Warnings</text>
+  <text x="125" y="240" class="desc" text-anchor="middle">Run python -Wd</text>
+  <text x="125" y="255" class="desc" text-anchor="middle">manage.py check</text>
+  <text x="125" y="270" class="desc" text-anchor="middle">Resolve deprecations</text>
+
+  <!-- Arrow 1 -> 2 -->
+  <line x1="210" y1="220" x2="250" y2="220" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 2 -->
+  <rect x="250" y="120" width="170" height="200" rx="12" fill="#ecfdf5" stroke="#10b981" stroke-width="2"/>
+  <circle cx="335" cy="165" r="22" fill="#a7f3d0"/>
+  <text x="335" y="171" class="num" text-anchor="middle">2</text>
+  <text x="335" y="215" class="label" text-anchor="middle">Align Packages</text>
+  <text x="335" y="240" class="desc" text-anchor="middle">Upgrade django-debug-</text>
+  <text x="335" y="255" class="desc" text-anchor="middle">toolbar, cors-headers</text>
+  <text x="335" y="270" class="desc" text-anchor="middle">and DB drivers first</text>
+
+  <!-- Arrow 2 -> 3 -->
+  <line x1="420" y1="220" x2="460" y2="220" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 3 -->
+  <rect x="460" y="120" width="170" height="200" rx="12" fill="#eff6ff" stroke="#3b82f6" stroke-width="2"/>
+  <circle cx="545" cy="165" r="22" fill="#dbeafe"/>
+  <text x="545" y="171" class="num" text-anchor="middle">3</text>
+  <text x="545" y="215" class="label" text-anchor="middle">Upgrade Django</text>
+  <text x="545" y="240" class="desc" text-anchor="middle">Update setup/requirements</text>
+  <text x="545" y="255" class="desc" text-anchor="middle">Run complete unit tests</text>
+  <text x="545" y="270" class="desc" text-anchor="middle">Fix breaking settings</text>
+
+  <!-- Arrow 3 -> 4 -->
+  <line x1="630" y1="220" x2="670" y2="220" stroke="#0f172a" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Step 4 -->
+  <rect x="670" y="120" width="170" height="200" rx="12" fill="#fef2f2" stroke="#ef4444" stroke-width="2"/>
+  <circle cx="755" cy="165" r="22" fill="#fee2e2"/>
+  <text x="755" y="171" class="num" text-anchor="middle">4</text>
+  <text x="755" y="215" class="label" text-anchor="middle">Staged Rollout</text>
+  <text x="755" y="240" class="desc" text-anchor="middle">Blue/Green Deploy</text>
+  <text x="755" y="255" class="desc" text-anchor="middle">Pre-migration step</text>
+  <text x="755" y="270" class="desc" text-anchor="middle">Gradual load shift</text>
+
+  <!-- Footer explanation -->
+  <rect x="40" y="360" width="800" height="60" rx="8" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1"/>
+  <text x="60" y="385" class="desc" font-size="12">Key Takeaway: Never jump multiple major versions directly. If going from 3.2 to 5.0, migrate through 4.2 LTS first. Keep warnings enabled</text>
+  <text x="60" y="402" class="desc" font-size="12">in CI/CD to prevent deprecated methods from slipping into production codebases.</text>
+</svg>
