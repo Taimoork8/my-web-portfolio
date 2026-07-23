@@ -66,11 +66,17 @@ function DashboardVisual() {
     { id: 4, patient: "Ayesha Omer", medicine: "Lisinopril 10mg", status: "audited", latency: 15 },
   ]);
 
-  // BLE-IoT simulator: simulate scanner updating and pairing devices
+  // BLE-IoT simulator: simulate scanner updating and pairing devices.
+  // Started after a delay so it doesn't compete with initial page load.
   useEffect(() => {
     if (activeTab !== 'bleiot') return;
+    // This panel is hidden below the lg breakpoint, so don't spend CPU on
+    // simulated updates no one can see there.
+    if (!window.matchMedia("(min-width: 1024px)").matches) return;
     const deviceNames = ["TempSensor-01", "Gateway-Hub", "SmartHaptic-v2", "CardiacPatch"];
-    const interval = setInterval(() => {
+    let interval: ReturnType<typeof setInterval>;
+    const startTimeout = setTimeout(() => {
+    interval = setInterval(() => {
       setDevices(prev => {
         const updated = prev.map(dev => {
           if (dev.status === "pairing") return { ...dev, status: "connected" as const, rssi: -50 + Math.floor(Math.random() * 10) };
@@ -92,23 +98,33 @@ function DashboardVisual() {
         return [newDevice, ...updated.filter((d, idx) => d.status !== "connected" || idx < 2)].slice(0, 4);
       });
     }, 3500);
-    return () => clearInterval(interval);
+    }, 2000);
+    return () => {
+      clearTimeout(startTimeout);
+      clearInterval(interval);
+    };
   }, [activeTab]);
 
-  // MedicalSync simulator: simulate live WebSocket dispatching
+  // MedicalSync simulator: simulate live WebSocket dispatching.
+  // Started after a delay so it doesn't compete with initial page load.
   useEffect(() => {
     if (activeTab !== 'medicalsync') return;
+    // This panel is hidden below the lg breakpoint, so don't spend CPU on
+    // simulated updates no one can see there.
+    if (!window.matchMedia("(min-width: 1024px)").matches) return;
     const patientNames = ["Ali Raza", "Sara Khan", "Usman Ali", "Hina Farooq", "Bilal Ahmad"];
     const medicines = ["Augmentin 375mg", "Panadol 500mg", "Lipitor 20mg", "Zantac 150mg", "Surbex-Z"];
-    
-    const interval = setInterval(() => {
+
+    let interval: ReturnType<typeof setInterval>;
+    const startTimeout = setTimeout(() => {
+    interval = setInterval(() => {
       setSyncQueue(prev => {
         const updated = prev.map(item => {
           if (item.status === "syncing") return { ...item, status: "dispensed" as const };
           if (item.status === "dispensed") return { ...item, status: "audited" as const };
           return item;
         });
-        
+
         const filtered = updated.filter((item, idx) => item.status !== "audited" || idx < 3);
         const nextId = Math.max(...prev.map(i => i.id)) + 1;
         const newPatient = {
@@ -121,7 +137,11 @@ function DashboardVisual() {
         return [newPatient, ...filtered].slice(0, 4);
       });
     }, 4000);
-    return () => clearInterval(interval);
+    }, 2000);
+    return () => {
+      clearTimeout(startTimeout);
+      clearInterval(interval);
+    };
   }, [activeTab]);
 
   return (
@@ -373,32 +393,8 @@ export default function Hero() {
       {/* Background with floating gradient blobs */}
       <div className="absolute inset-0 bg-dot-grid opacity-60" />
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-40 bg-gradient-to-b from-transparent via-white/10 to-transparent" />
-      <motion.div 
-        animate={{ 
-          x: [0, 40, -20, 0],
-          y: [0, -60, 40, 0],
-          scale: [1, 1.1, 0.95, 1],
-        }}
-        transition={{ 
-          repeat: Infinity,
-          duration: 20,
-          ease: "easeInOut"
-        }}
-        className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#C6F432]/4 rounded-full blur-[120px] pointer-events-none" 
-      />
-      <motion.div 
-        animate={{ 
-          x: [0, -30, 50, 0],
-          y: [0, 50, -40, 0],
-          scale: [1, 0.9, 1.1, 1],
-        }}
-        transition={{ 
-          repeat: Infinity,
-          duration: 25,
-          ease: "easeInOut"
-        }}
-        className="absolute bottom-10 left-10 w-[350px] h-[350px] bg-[#6DE7FF]/3 rounded-full blur-[100px] pointer-events-none" 
-      />
+      <div className="absolute top-1/3 right-10 w-[450px] h-[450px] bg-[#C6F432]/4 rounded-full blur-[120px] pointer-events-none animate-blob-a" />
+      <div className="absolute bottom-10 left-10 w-[350px] h-[350px] bg-[#6DE7FF]/3 rounded-full blur-[100px] pointer-events-none animate-blob-b" />
 
       <div className="max-w-6xl mx-auto px-6 w-full relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -415,17 +411,13 @@ export default function Hero() {
               <span className="text-xs text-[#C6F432] font-medium">Available for new projects</span>
             </motion.div>
 
-            {/* Headline */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="font-display text-[2.75rem] sm:text-5xl lg:text-[3.25rem] font-bold leading-[1.1] tracking-tight text-white mb-5"
-            >
+            {/* Headline — no fade-in: this is the LCP element, so it must
+                paint immediately instead of waiting on JS to animate opacity. */}
+            <h1 className="font-display text-[2.75rem] sm:text-5xl lg:text-[3.25rem] font-bold leading-[1.1] tracking-tight text-white mb-5">
               I build scalable{" "}
               <span className="text-gradient">SaaS platforms</span>,{" "}
               mobile apps, and IoT systems.
-            </motion.h1>
+            </h1>
 
             {/* Subheadline */}
             <motion.p
@@ -499,7 +491,9 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* Right: Dashboard Visual */}
+          {/* Right: Dashboard Visual — always rendered so layout space is
+              reserved from the first paint (avoids a layout shift on
+              hydration); its simulator timers are gated separately. */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
