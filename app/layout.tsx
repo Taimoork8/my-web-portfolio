@@ -5,18 +5,20 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import JsonLd from "@/components/JsonLd";
+import { SITE_URL } from "@/lib/seo";
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
   variable: "--font-display",
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
   variable: "--font-sans",
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -27,16 +29,14 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const SITE_URL = "https://taikha.dev";
-
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Taimoor Khan — Full-Stack Product Engineer | Flutter, Django & IoT",
+    default: "Taimoor Khan — Full-Stack Engineer | Flutter & Django",
     template: "%s | Taimoor Khan",
   },
   description:
-    "Full-stack product engineer building scalable SaaS platforms, Flutter mobile apps, Django/DRF backends, and BLE/IoT hardware integrations (ESP32, STM32, Raspberry Pi) for startups and businesses. 5+ years of experience shipping production systems end-to-end.",
+    "Full-stack product engineer building SaaS platforms, Flutter apps, and Django backends with BLE/IoT integrations. 5+ years shipping production systems.",
   keywords: [
     "SaaS developer",
     "Flutter developer",
@@ -59,9 +59,6 @@ export const metadata: Metadata = {
   authors: [{ name: "Taimoor Khan", url: SITE_URL }],
   creator: "Taimoor Khan",
   publisher: "Taimoor Khan",
-  alternates: {
-    canonical: SITE_URL,
-  },
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -70,22 +67,13 @@ export const metadata: Metadata = {
     description:
       "I build scalable SaaS platforms, Flutter mobile apps, Django backends, and BLE/IoT hardware integrations for startups and businesses.",
     siteName: "Taimoor Khan",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Taimoor Khan — Full-Stack Product Engineer",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Taimoor Khan — Full-Stack Product Engineer",
     description:
       "I build scalable SaaS platforms, Flutter mobile apps, Django backends, and BLE/IoT hardware integrations.",
-    images: ["/og-image.png"],
-    creator: "@your_twitter_handle",
+    creator: "@taimoor405",
   },
   robots: {
     index: true,
@@ -97,9 +85,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  verification: {
-    google: "your-google-search-console-verification-code",
   },
 };
 
@@ -124,9 +109,9 @@ const personJsonLd = {
     "React",
   ],
   sameAs: [
-    "https://github.com/your-github-handle",
-    "https://www.linkedin.com/in/your-linkedin-handle",
-    "https://x.com/your_twitter_handle",
+    "https://github.com/Taimoork8",
+    "https://linkedin.com/in/taimoorkhan405",
+    "https://x.com/taimoor405",
   ],
 };
 
@@ -150,13 +135,7 @@ export default function RootLayout({
             gtag('config', 'G-0BYDLYFRVM');
           `}
         </Script>
-        <Script
-          id="person-jsonld"
-          type="application/ld+json"
-          strategy="beforeInteractive"
-        >
-          {JSON.stringify(personJsonLd)}
-        </Script>
+        <JsonLd id="person-jsonld" data={personJsonLd} />
         <Navbar />
         <main>{children}</main>
         <Footer />

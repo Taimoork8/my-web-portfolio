@@ -1,0 +1,18 @@
+# Taimoor Khan
+
+> Full-stack product engineer building SaaS platforms, Flutter mobile apps, Django/DRF backends, and BLE/IoT hardware integrations (ESP32, STM32, Raspberry Pi) for startups and businesses. 5+ years of experience shipping production systems end-to-end.
+
+Taimoor Khan is a full-stack product engineer specializing in Flutter mobile development, Django/DRF backends, BLE/IoT hardware integration, and multi-tenant SaaS platforms. Based in Islamabad, Pakistan, working remotely worldwide.
+
+## Pages
+
+- [Home](https://www.taikha.dev/): Overview of services, tech stack, and process.
+- [About](https://www.taikha.dev/about): Background, work experience, and skills.
+- [Services](https://www.taikha.dev/services): MVP development, SaaS, mobile apps, AI systems, automation, dashboards.
+- [Case Studies](https://www.taikha.dev/case-studies): Real projects — student portal SaaS, medical inventory system, BLE IoT app, CRM & inventory system, Django legacy upgrade.
+- [Blog](https://www.taikha.dev/blog): Technical articles on Flutter architecture, BLE, Django, SaaS scaling, and AI applications.
+- [Contact](https://www.taikha.dev/contact): Start a project or book a call.
+
+## Core expertise
+
+Flutter, Dart, Django, Django REST Framework, PostgreSQL, Firebase, BLE/ESP32/STM32 firmware integration, Next.js, React, TypeScript, Celery, Redis, AI/LLM integrations (OpenAI, LangChain).
