@@ -46,8 +46,8 @@ const contactOptions = [
     icon: FileText,
     label: "Download CV",
     value: "View & download resume",
-    href: "https://1drv.ms/b/c/d11c8d9d153988f2/IQD5wO__cgdDQpX18Rkur3piAX6eetcnhJJ0PYunJMb3rGs?e=Krc4A9",
-    description: "Opens in OneDrive",
+    href: "https://drive.google.com/file/d/1VePGviqwT_plZD8toHNKNcDkkcegr8mg/view?usp=sharing",
+    description: "Opens in Google Drive",
   },
 ];
 
