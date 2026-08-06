@@ -49,7 +49,64 @@ export const services = [
   },
 ];
 
-export const projects = [
+export interface Project {
+  id: string;
+  slug: string;
+  category: string;
+  title: string;
+  tagline: string;
+  description: string;
+  problem: string;
+  solution: string;
+  features: string[];
+  stack: string[];
+  metrics: { label: string; value: string }[];
+  color: string;
+  liveUrl?: string;
+}
+
+export const projects: Project[] = [
+  {
+    id: "deenroot",
+    slug: "deenroot",
+    category: "Islamic Tech / Systems & AI",
+    title: "DeenRoot",
+    tagline: "Free, ad-free Qur'an platform with a scripture-integrity guarantee enforced at the database layer",
+    description:
+      "A full-stack Islamic learning platform — Qur'an reading, Hadith study, prayer times, and a retrieval-grounded AI assistant — built solo on a Django/DRF backend and a Next.js frontend, where Postgres is the single source of truth and external content providers are never a request-time dependency.",
+    problem:
+      "Most Qur'an platforms either gate core content behind ads and subscriptions, or treat scripture like any other cached API response — one bad upstream payload away from silently serving corrupted text. Neither is acceptable when the data being served is the Qur'an: it has to stay free, and it has to be provably unable to change once stored.",
+    solution:
+      "Built a Django/DRF backend where every external read (Quran Foundation, AlQuran Cloud, Sunnah.com, Aladhan) goes through a sync engine, not a direct API call. A Redis-backed distributed lock collapses thundering-herd requests to a single upstream call; a per-provider circuit breaker skips a failing provider for a cooldown window instead of retrying into it; every request carries a hard 2-second ceiling before falling back to whatever Postgres already has, flagged partial, with a Celery task finishing the job in the background. Scripture immutability is enforced twice — once in an application-layer guard, once as a Postgres BEFORE UPDATE trigger that raises on the write even if the ORM guard is bypassed entirely.",
+    features: [
+      "114 surahs / 6,236 ayahs across 263 translation editions in 86 languages, plus tafsir, word-by-word study, and audio recitation",
+      "RAG-grounded AI assistant that answers only from indexed platform content and flags ungrounded claims instead of guessing",
+      "Redis-locked, circuit-breaker-guarded sync engine with a hard 2-second foreground timeout and background retry via Celery",
+      "Scripture immutability enforced twice — application guard plus a Postgres trigger as backstop",
+      "Personal library (bookmarks, notes, highlights, reading progress) and a full learning system (courses, quizzes, badges, certificates)",
+      "Prayer times and Qibla direction, with Qibla computed locally — zero external calls",
+    ],
+    stack: [
+      "Django",
+      "DRF",
+      "PostgreSQL",
+      "Redis",
+      "Celery",
+      "Meilisearch",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "RAG/LLM",
+    ],
+    metrics: [
+      { label: "Ayahs Served", value: "6,236" },
+      { label: "Hydration Ceiling", value: "<2s" },
+      { label: "Translations / Languages", value: "263 / 86" },
+    ],
+    color: "#10B981",
+    liveUrl: "https://deenroot.com",
+  },
   {
     id: "student-portal",
     slug: "student-portal",

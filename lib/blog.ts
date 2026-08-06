@@ -65,8 +65,13 @@ export function getAllPosts(): BlogPost[] {
         cover = cover.replace("./images/", "/images/");
       }
 
-      // Dynamically resolve the matching diagram SVG by prefix
-      const diagram = `/images/${prefix}-diagram.svg`;
+      // Dynamically resolve the matching diagram image by frontmatter or prefix
+      let diagram = data.diagram || `/images/${prefix}-diagram.svg`;
+      if (diagram.startsWith("images/")) {
+        diagram = "/" + diagram;
+      } else if (diagram.startsWith("./images/")) {
+        diagram = diagram.replace("./images/", "/images/");
+      }
 
       // Convert date to readable string/ISO date
       let dateStr = "";

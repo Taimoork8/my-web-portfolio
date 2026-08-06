@@ -2,23 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowLeft, Check } from "lucide-react";
-import { projects } from "@/lib/data";
-
-interface Project {
-  id: string;
-  slug: string;
-  category: string;
-  title: string;
-  tagline: string;
-  description: string;
-  problem: string;
-  solution: string;
-  features: string[];
-  stack: string[];
-  metrics: { label: string; value: string }[];
-  color: string;
-}
+import { ArrowLeft, Check, ExternalLink } from "lucide-react";
+import { projects, Project } from "@/lib/data";
 
 export default function CaseStudyDetail({ project }: { project: Project }) {
   return (
@@ -47,12 +32,25 @@ export default function CaseStudyDetail({ project }: { project: Project }) {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-14"
         >
-          <span
-            className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold mb-5"
-            style={{ background: `${project.color}14`, color: project.color, border: `1px solid ${project.color}25` }}
-          >
-            {project.category}
-          </span>
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-5">
+            <span
+              className="inline-flex items-center px-2.5 py-1 rounded-md text-xs font-semibold"
+              style={{ background: `${project.color}14`, color: project.color, border: `1px solid ${project.color}25` }}
+            >
+              {project.category}
+            </span>
+            {project.liveUrl && (
+              <a
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-[#C6F432] text-black hover:bg-[#b5e327] transition-all duration-300 shadow-lg shadow-[#C6F432]/10"
+              >
+                Visit Live Site
+                <ExternalLink className="w-3.5 h-3.5" />
+              </a>
+            )}
+          </div>
           <h1 className="font-display text-4xl sm:text-5xl font-bold text-white leading-tight mb-3">
             {project.title}
           </h1>
