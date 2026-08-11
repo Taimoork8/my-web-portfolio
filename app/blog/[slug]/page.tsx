@@ -57,15 +57,18 @@ export default async function BlogPostPage({ params }: Props) {
     image: `${SITE_URL}${post.cover}`,
     url: `${SITE_URL}/blog/${post.slug}`,
     keywords: post.tags,
+    inLanguage: "en-US",
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${SITE_URL}/blog/${post.slug}`,
+    },
     author: {
       "@type": "Person",
       name: "Taimoor Khan",
       url: SITE_URL,
     },
     publisher: {
-      "@type": "Person",
-      name: "Taimoor Khan",
-      url: SITE_URL,
+      "@id": `${SITE_URL}/#person`,
     },
   };
 

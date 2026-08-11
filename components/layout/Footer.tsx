@@ -31,6 +31,10 @@ const footerLinks = {
     { label: "Services", href: "/services" },
     { label: "Blog", href: "/blog" },
   ],
+  Hire: [
+    { label: "Flutter Developer", href: "/flutter-developer" },
+    { label: "Django Developer", href: "/django-developer" },
+  ],
   Company: [
     { label: "About", href: "/about" },
     { label: "Contact", href: "/contact" },
@@ -48,7 +52,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-white/8 bg-[#0A0A0B]">
       <div className="max-w-6xl mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-12">
           {/* Brand */}
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5 mb-4">

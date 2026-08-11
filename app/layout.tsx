@@ -6,7 +6,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/JsonLd";
-import { SITE_URL } from "@/lib/seo";
+import { SITE_NAME, SITE_URL } from "@/lib/seo";
 
 const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
@@ -91,6 +91,7 @@ export const metadata: Metadata = {
 const personJsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": `${SITE_URL}/#person`,
   name: "Taimoor Khan",
   url: SITE_URL,
   jobTitle: "Full-Stack Product Engineer",
@@ -115,6 +116,23 @@ const personJsonLd = {
   ],
 };
 
+// Site-wide entity: establishes the site itself as a distinct node in the
+// knowledge graph and ties it back to the Person via `publisher`. Rendered
+// on every route (including the homepage, which otherwise carried no JSON-LD).
+const websiteJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  name: SITE_NAME,
+  url: SITE_URL,
+  description:
+    "Portfolio and case studies of Taimoor Khan, a full-stack product engineer specializing in Flutter development, Django development, and SaaS platforms.",
+  publisher: {
+    "@id": `${SITE_URL}/#person`,
+  },
+  inLanguage: "en-US",
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -136,6 +154,7 @@ export default function RootLayout({
           `}
         </Script>
         <JsonLd id="person-jsonld" data={personJsonLd} />
+        <JsonLd id="website-jsonld" data={websiteJsonLd} />
         <Navbar />
         <main>{children}</main>
         <Footer />

@@ -1,18 +1,59 @@
 # Taimoor Khan
 
-> Full-stack product engineer building SaaS platforms, Flutter mobile apps, Django/DRF backends, and BLE/IoT hardware integrations (ESP32, STM32, Raspberry Pi) for startups and businesses. 5+ years of experience shipping production systems end-to-end.
+> Full-stack product engineer and Flutter developer / Django developer building SaaS platforms, mobile apps, and BLE/IoT hardware integrations (ESP32, STM32) for startups and businesses. 5+ years of experience shipping production systems end-to-end, based in Islamabad, Pakistan, working remotely worldwide.
 
-Taimoor Khan is a full-stack product engineer specializing in Flutter mobile development, Django/DRF backends, BLE/IoT hardware integration, and multi-tenant SaaS platforms. Based in Islamabad, Pakistan, working remotely worldwide.
+Taimoor Khan is a full-stack product engineer specializing in Flutter mobile development, Django/DRF backends, BLE/IoT hardware integration, AI/LLM systems, and multi-tenant SaaS platforms. Available for hire on a freelance/contract basis for startups and businesses needing an MVP built, a mobile app shipped, or a legacy backend modernized.
 
 ## Pages
 
 - [Home](https://www.taikha.dev/): Overview of services, tech stack, and process.
+- [Flutter Developer](https://www.taikha.dev/flutter-developer): Dedicated page for Flutter/mobile hiring — capabilities, proof projects, tech stack, FAQ.
+- [Django Developer](https://www.taikha.dev/django-developer): Dedicated page for Django/backend hiring — capabilities, proof projects, tech stack, FAQ.
 - [About](https://www.taikha.dev/about): Background, work experience, and skills.
-- [Services](https://www.taikha.dev/services): MVP development, SaaS, mobile apps, AI systems, automation, dashboards.
-- [Case Studies](https://www.taikha.dev/case-studies): Real projects — student portal SaaS, medical inventory system, BLE IoT app, CRM & inventory system, Django legacy upgrade.
+- [Services](https://www.taikha.dev/services): MVP development, SaaS development, mobile app development (Flutter), AI systems, automation workflows, dashboards & analytics.
+- [Case Studies](https://www.taikha.dev/case-studies): Real shipped projects — see below.
 - [Blog](https://www.taikha.dev/blog): Technical articles on Flutter architecture, BLE, Django, SaaS scaling, and AI applications.
 - [Contact](https://www.taikha.dev/contact): Start a project or book a call.
 
+## Services
+
+- **MVP Development** — production-ready MVPs for startups, not prototypes. Next.js/Django/Flutter/PostgreSQL/Firebase.
+- **SaaS Development** — multi-tenant architecture, Stripe billing, admin & customer dashboards, RBAC.
+- **Mobile App Development** — cross-platform Flutter apps (iOS + Android), offline-first, push notifications, BLE/hardware integrations.
+- **AI Systems** — LLM integrations (OpenAI, LangChain), RAG pipelines, intent detection, cost-optimized inference.
+- **Automation Workflows** — background task processing (Celery/Redis), tool/API integrations, scheduled and event-driven jobs.
+- **Dashboards & Analytics** — real-time charts, KPIs, exports, role-based access.
+
+## Case studies
+
+- [DeenRoot](https://www.taikha.dev/case-studies/deenroot): Free, ad-free Qur'an platform (114 surahs, 6,236 ayahs, 263 translations in 86 languages) with a scripture-integrity guarantee enforced at the Postgres layer, a RAG-grounded AI assistant, and a Redis-locked/circuit-breaker-guarded sync engine with a hard 2-second hydration ceiling. Built solo — Django/DRF + Next.js. Live at deenroot.com.
+- [Student Portal System](https://www.taikha.dev/case-studies/student-portal): Multi-role school management SaaS (Flutter/Django/Firebase) — 2,000+ active students across 3 schools, 80% reduction in manual work via biometric attendance and automated reporting.
+- [Karwan-e-Falah](https://www.taikha.dev/case-studies/karwan-e-falah): Charitable medical inventory and real-time prescription dispatch system (Django/Channels/Celery) — 5,000+ SKU catalog synced in under 100ms, ~15 hours/week of manual auditing removed.
+- [BLE IoT Support App](https://www.taikha.dev/case-studies/ble-iot): Flutter app for BLE device authentication and control with ESP32 firmware — 15+ device variants, 99% pairing success, sub-200ms auth.
+- [CRM & Inventory System](https://www.taikha.dev/case-studies/crm-inventory): Unified CRM + inventory + sales reporting platform (Flutter/Django) — 5,000+ SKUs, 500+ tracked sales cycles, ~70% faster reporting.
+- [Django Enterprise Legacy Upgrade](https://www.taikha.dev/case-studies/django-upgrade): Zero-downtime migration of an enterprise app from Django 2.x to 5.x — 100% of flagged security risk resolved, +35% query performance.
+
+## Blog articles
+
+- [Building a Sync Engine for Scripture](https://www.taikha.dev/blog/building-sync-engine-for-scripture): Circuit breakers, Redis distributed locks, and a Postgres BEFORE UPDATE trigger for scripture-integrity guarantees under load.
+- [Building AI Apps with Flutter](https://www.taikha.dev/blog/building-ai-apps-with-flutter)
+- [Django Upgrade Guide](https://www.taikha.dev/blog/django-upgrade-guide)
+- [Flutter BLE Background Service](https://www.taikha.dev/blog/flutter-ble-background-service)
+- [Deploying Django on AWS](https://www.taikha.dev/blog/deploying-django-on-aws)
+- [Flutter Performance Optimization](https://www.taikha.dev/blog/flutter-performance-optimization)
+- [Firebase vs Supabase](https://www.taikha.dev/blog/firebase-vs-supabase)
+- [SaaS Architecture with Django](https://www.taikha.dev/blog/saas-architecture-with-django)
+- [Django REST API Best Practices](https://www.taikha.dev/blog/django-rest-api-best-practices)
+- [Flutter BLE Guide](https://www.taikha.dev/blog/flutter-ble-guide)
+- [Flutter Clean Architecture](https://www.taikha.dev/blog/flutter-clean-architecture)
+
 ## Core expertise
 
-Flutter, Dart, Django, Django REST Framework, PostgreSQL, Firebase, BLE/ESP32/STM32 firmware integration, Next.js, React, TypeScript, Celery, Redis, AI/LLM integrations (OpenAI, LangChain).
+Flutter, Dart, Django, Django REST Framework, PostgreSQL, Firebase, BLE/ESP32/STM32 firmware integration, Next.js, React, TypeScript, Celery, Redis, AI/LLM integrations (OpenAI, LangChain, RAG).
+
+## Contact & links
+
+- Website: https://www.taikha.dev
+- GitHub: https://github.com/Taimoork8
+- LinkedIn: https://linkedin.com/in/taimoorkhan405
+- X/Twitter: https://x.com/taimoor405

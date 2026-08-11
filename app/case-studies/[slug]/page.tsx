@@ -37,13 +37,21 @@ export default async function CaseStudyPage({ params }: Props) {
     name: project.title,
     description: project.description,
     url: `${SITE_URL}/case-studies/${project.slug}`,
+    image: `${SITE_URL}/case-studies/${project.slug}/opengraph-image`,
     keywords: project.stack,
     about: project.category,
+    inLanguage: "en-US",
     author: {
       "@type": "Person",
       name: "Taimoor Khan",
       url: SITE_URL,
     },
+    creator: {
+      "@type": "Person",
+      name: "Taimoor Khan",
+      url: SITE_URL,
+    },
+    ...(project.liveUrl ? { sameAs: [project.liveUrl] } : {}),
   };
 
   const breadcrumb = breadcrumbJsonLd([

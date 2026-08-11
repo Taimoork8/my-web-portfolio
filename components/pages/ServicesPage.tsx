@@ -5,6 +5,11 @@ import Link from "next/link";
 import { ArrowUpRight, Check, Rocket, Layers, Smartphone, Brain, Cpu, LayoutDashboard } from "lucide-react";
 import { fullServices } from "@/lib/data";
 
+const roleLinkByServiceId: Record<string, { href: string; label: string }> = {
+  mobile: { href: "/flutter-developer", label: "Hire a Flutter developer" },
+  saas: { href: "/django-developer", label: "Hire a Django developer" },
+};
+
 const serviceIcons: Record<string, any> = {
   mvp: Rocket,
   saas: Layers,
@@ -76,6 +81,16 @@ export default function ServicesPage() {
                     </div>
                     <p className="text-sm font-mono mb-4" style={{ color }}>{service.tagline}</p>
                     <p className="text-sm text-white/55 leading-relaxed mb-6">{service.description}</p>
+                    {roleLinkByServiceId[service.id] && (
+                      <Link
+                        href={roleLinkByServiceId[service.id].href}
+                        className="inline-flex items-center gap-1.5 text-xs font-medium mb-6 hover:opacity-80 transition-opacity"
+                        style={{ color }}
+                      >
+                        {roleLinkByServiceId[service.id].label}
+                        <ArrowUpRight className="w-3 h-3" />
+                      </Link>
+                    )}
 
                     {/* Benefits */}
                     <div className="grid sm:grid-cols-2 gap-2 mb-6">

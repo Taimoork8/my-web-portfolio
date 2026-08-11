@@ -2,7 +2,8 @@
 
 import { MouseEvent } from "react";
 import { motion } from "framer-motion";
-import { Layers, Smartphone, Brain, Users, LayoutDashboard, Wrench } from "lucide-react";
+import Link from "next/link";
+import { ArrowUpRight, Layers, Smartphone, Brain, Users, LayoutDashboard, Wrench } from "lucide-react";
 
 const items = [
   {
@@ -12,10 +13,19 @@ const items = [
     accent: "#C6F432",
     gridClass: "lg:col-span-2",
     meta: (
-      <div className="mt-5 flex flex-wrap gap-2">
-        <span className="text-[10px] font-mono bg-white/5 border border-white/8 text-white/50 px-2 py-0.5 rounded">Multi-Tenancy</span>
-        <span className="text-[10px] font-mono bg-white/5 border border-white/8 text-white/50 px-2 py-0.5 rounded">Stripe Billing</span>
-        <span className="text-[10px] font-mono bg-[#C6F432]/10 border border-[#C6F432]/20 text-[#C6F432] px-2 py-0.5 rounded">OAuth2 & MFA</span>
+      <div className="mt-5">
+        <div className="flex flex-wrap gap-2 mb-3">
+          <span className="text-[10px] font-mono bg-white/5 border border-white/8 text-white/50 px-2 py-0.5 rounded">Multi-Tenancy</span>
+          <span className="text-[10px] font-mono bg-white/5 border border-white/8 text-white/50 px-2 py-0.5 rounded">Stripe Billing</span>
+          <span className="text-[10px] font-mono bg-[#C6F432]/10 border border-[#C6F432]/20 text-[#C6F432] px-2 py-0.5 rounded">OAuth2 & MFA</span>
+        </div>
+        <Link
+          href="/django-developer"
+          className="inline-flex items-center gap-1 text-xs text-white/40 hover:text-[#C6F432] transition-colors"
+        >
+          Hire a Django developer
+          <ArrowUpRight className="w-3 h-3" />
+        </Link>
       </div>
     ),
   },
@@ -25,7 +35,15 @@ const items = [
     description: "Cross-platform Flutter apps with polished UI, offline-first architecture, and deep cloud integrations.",
     accent: "#6DE7FF",
     gridClass: "lg:col-span-1",
-    meta: null,
+    meta: (
+      <Link
+        href="/flutter-developer"
+        className="mt-5 inline-flex items-center gap-1 text-xs text-white/40 hover:text-[#6DE7FF] transition-colors"
+      >
+        Hire a Flutter developer
+        <ArrowUpRight className="w-3 h-3" />
+      </Link>
+    ),
   },
   {
     icon: Brain,

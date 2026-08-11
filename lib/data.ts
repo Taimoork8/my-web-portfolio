@@ -170,9 +170,9 @@ export const projects: Project[] = [
     description:
       "A Flutter mobile application that communicates with ESP32 microcontrollers over Bluetooth Low Energy, handling secure device authentication, real-time status, and remote controls.",
     problem:
-      "Field technicians needed a reliable mobile interface to configure and authenticate BLE-connected hardware without complex tooling or physical access ports.",
+      "Field technicians needed a reliable mobile interface to configure and authenticate BLE-connected hardware without complex tooling or physical access ports. Consumer BLE stacks on Android and iOS handle connection state very differently — inconsistent RSSI reporting, background scan throttling, and silent GATT disconnects meant a naive implementation would work in a demo and fail intermittently in the field, which is worse than not having a mobile option at all.",
     solution:
-      "A dedicated Flutter app with BLE scanning, device pairing, encrypted authentication tokens, and live control panels — all with offline fallback. In production, it pairs with 15+ device variants at a 99% success rate, with authentication completing in under 200ms per connection.",
+      "A dedicated Flutter app with BLE scanning, device pairing, encrypted authentication tokens, and live control panels — all with offline fallback. Each device advertises a rotating identifier; on connect, the app and the ESP32/STM32 firmware run a challenge-response handshake so a stolen or spoofed advertisement can't authenticate, and the resulting session key gates every subsequent GATT write. A platform-specific reconnect/retry layer absorbs the RSSI noise and dropped-connection cases that vary between Android and iOS BLE stacks, instead of surfacing them as user-facing errors. If a device goes out of range mid-operation, the app falls back to the last known state rather than blocking the technician. In production, it pairs with 15+ device variants at a 99% success rate, with authentication completing in under 200ms per connection.",
     features: [
       "BLE scanning and auto-pairing",
       "ESP32 firmware communication",
@@ -224,9 +224,9 @@ export const projects: Project[] = [
     description:
       "A complete modernization of an enterprise application, migrating the entire legacy system from Django 2.x to Django 5.x, updating dependencies, query optimizations, and database structures.",
     problem:
-      "A business was locked in Django 2.x, facing security vulnerabilities, deprecated package conflicts, slow query performance, and compatibility blocks with modern Python runtimes.",
+      "A business was locked in Django 2.x, facing security vulnerabilities, deprecated package conflicts, slow query performance, and compatibility blocks with modern Python runtimes. Jumping straight from 2.x to 5.x wasn't an option — three major versions apart meant deprecated middleware, removed URL-routing helpers, and ORM behavior changes could each break the app in ways that wouldn't surface until specific code paths ran in production.",
     solution:
-      "A phased migration strategy that refactored deprecated APIs, upgraded custom database routing, resolved packages compatibility issues, and optimized SQL transactions to work smoothly with Django 5.x. The migration resolved 100% of the flagged security risk and delivered a 35% performance gain on the optimized query paths, with zero downtime.",
+      "A phased migration strategy: one intermediate LTS version at a time rather than a single big-bang jump, with the test suite run and gaps backfilled at every stop before moving to the next version. Deprecated APIs and old-style URL patterns were refactored incrementally, custom database routing was upgraded to match the new ORM internals, and third-party package compatibility was resolved version by version instead of all at once — so a break in one dependency never blocked progress on the rest. Query paths flagged by the new version's stricter ORM checks were profiled and rewritten rather than just silenced. Each intermediate version shipped to production behind the existing test and rollback tooling, which is what made zero-downtime possible across the whole migration rather than just the final cutover. The migration resolved 100% of the flagged security risk and delivered a 35% performance gain on the optimized query paths, with zero downtime.",
     features: [
       "Zero-downtime database migration path",
       "Refactoring deprecated ORM API query layers",

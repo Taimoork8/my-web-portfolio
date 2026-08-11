@@ -412,11 +412,15 @@ export default function Hero() {
             </motion.div>
 
             {/* Headline — no fade-in: this is the LCP element, so it must
-                paint immediately instead of waiting on JS to animate opacity. */}
+                paint immediately instead of waiting on JS to animate opacity.
+                Names the two core roles directly (Flutter/Django developer)
+                instead of generic nouns, since this is the page's strongest
+                on-page ranking signal for those exact search terms. */}
             <h1 className="font-display text-[2.75rem] sm:text-5xl lg:text-[3.25rem] font-bold leading-[1.1] tracking-tight text-white mb-5">
-              I build scalable{" "}
-              <span className="text-gradient">SaaS platforms</span>,{" "}
-              mobile apps, and IoT systems.
+              I&apos;m a{" "}
+              <span className="text-gradient">Flutter developer</span> &{" "}
+              <span className="text-gradient">Django developer</span>{" "}
+              building scalable SaaS platforms.
             </h1>
 
             {/* Subheadline */}
