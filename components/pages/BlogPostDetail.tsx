@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Calendar, Tag, ArrowUpRight } from "lucide-react";
 import { BlogPost } from "@/lib/blog";
 import "highlight.js/styles/github-dark.css";
@@ -41,11 +42,13 @@ export default function BlogPostDetail({ post }: BlogPostDetailProps) {
           transition={{ duration: 0.5 }}
           className="relative aspect-[21/9] w-full rounded-2xl border border-white/8 bg-[#18181B] overflow-hidden mb-10 shadow-[0_10px_30px_rgba(0,0,0,0.3)]"
         >
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
+          <Image
             src={post.cover}
             alt={post.title}
-            className="w-full h-full object-cover"
+            fill
+            sizes="(min-width: 1024px) 896px, 100vw"
+            priority
+            className="object-cover"
           />
         </motion.div>
 

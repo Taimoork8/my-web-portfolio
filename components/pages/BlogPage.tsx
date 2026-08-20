@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowUpRight, Search, Calendar, Tag } from "lucide-react";
 import { BlogPost } from "@/lib/blog";
 
@@ -108,12 +109,13 @@ export default function BlogPage({ posts }: BlogPageProps) {
 
               {/* Cover Image */}
               <div className="col-span-7 relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-white/6 bg-[#18181B]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={featuredPost.cover}
                   alt={featuredPost.title}
-                  className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500 ease-out"
-                  loading="eager"
+                  fill
+                  sizes="(min-width: 768px) 55vw, 100vw"
+                  priority
+                  className="object-cover group-hover:scale-[1.02] transition-transform duration-500 ease-out"
                 />
               </div>
 
@@ -158,12 +160,12 @@ export default function BlogPage({ posts }: BlogPageProps) {
           <div className="block md:hidden mb-6">
             <Link href={`/blog/${featuredPost.slug}`} className="group flex flex-col w-full rounded-2xl bg-[#111113]/50 backdrop-blur-sm border border-white/8 hover:border-white/16 transition-all duration-300 overflow-hidden relative">
               <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-white/8 bg-[#18181B]">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
+                <Image
                   src={featuredPost.cover}
                   alt={featuredPost.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                  loading="lazy"
+                  fill
+                  sizes="100vw"
+                  className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                 />
               </div>
 
@@ -216,12 +218,12 @@ export default function BlogPage({ posts }: BlogPageProps) {
                   <Link href={`/blog/${post.slug}`} className="group flex flex-col w-full rounded-2xl bg-[#111113]/50 backdrop-blur-sm border border-white/8 hover:border-[#C6F432]/20 hover:shadow-lg hover:shadow-[#C6F432]/2 transition-all duration-300 overflow-hidden relative">
                     {/* Cover Image Container */}
                     <div className="relative aspect-[16/9] w-full overflow-hidden border-b border-white/8 bg-[#18181B]">
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
+                      <Image
                         src={post.cover}
                         alt={post.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                        loading="lazy"
+                        fill
+                        sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                       />
                     </div>
 

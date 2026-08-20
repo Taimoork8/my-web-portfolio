@@ -7,10 +7,10 @@ import { projects } from "@/lib/data";
 
 export default function FeaturedProjects() {
   return (
-    <section className="py-28 relative">
+    <section className="py-10 relative">
       {/* Divider */}
       <div className="max-w-6xl mx-auto px-6">
-        <div className="h-px bg-gradient-to-r from-transparent via-white/8 to-transparent mb-28" />
+        <div className="h-px bg-gradient-to-r from-transparent via-white/8 to-transparent mb-8" />
       </div>
 
       <div className="max-w-6xl mx-auto px-6">

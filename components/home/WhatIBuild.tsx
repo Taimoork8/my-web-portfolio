@@ -157,7 +157,7 @@ export default function WhatIBuild() {
   };
 
   return (
-    <section className="py-28 relative">
+    <section className="py-10 relative">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div

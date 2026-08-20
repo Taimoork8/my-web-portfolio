@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Bricolage_Grotesque, DM_Sans, JetBrains_Mono } from "next/font/google";
-import Script from "next/script";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { MotionConfig } from "framer-motion";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ScrollToTopButton from "@/components/layout/ScrollToTopButton";
 import JsonLd from "@/components/JsonLd";
 import { SITE_NAME, SITE_URL } from "@/lib/seo";
 
@@ -27,6 +29,10 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
   weight: ["400", "500"],
   display: "swap",
+  // Only used for small badge/metric labels well below the LCP headline —
+  // not worth a render-blocking preload hint competing with the fonts that
+  // actually gate first paint.
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -144,21 +150,16 @@ export default function RootLayout({
       className={`dark ${bricolage.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}
     >
       <body className="antialiased bg-[#0A0A0B] text-[#F0EDE6] min-h-screen">
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-0BYDLYFRVM" strategy="afterInteractive" />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-0BYDLYFRVM');
-          `}
-        </Script>
         <JsonLd id="person-jsonld" data={personJsonLd} />
         <JsonLd id="website-jsonld" data={websiteJsonLd} />
-        <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <MotionConfig reducedMotion="user">
+          <Navbar />
+          <main>{children}</main>
+          <Footer />
+          <ScrollToTopButton />
+        </MotionConfig>
         <SpeedInsights />
+        <GoogleAnalytics gaId="G-0BYDLYFRVM" />
       </body>
     </html>
   );

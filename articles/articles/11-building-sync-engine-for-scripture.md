@@ -72,7 +72,7 @@ Closed is normal. N consecutive failures trip it open, and it skips the provider
 
 ## Scripture Immutability: Enforcing It Twice, On Purpose
 
-![DeenRoot Scripture Integrity Architecture](images/11-scripture-integrity.png)
+![DeenRoot Scripture Integrity Architecture](images/11-scripture-integrity.jpg)
 
 Once an ayah's Arabic text is stored, no later provider response gets to change it — a corrupted upstream payload should never be able to silently rewrite the mushaf. The application-layer guard diffs incoming text against what's stored and refuses the write on a mismatch, logging an `IntegrityAlert`. That's the primary defense. But I don't trust it as the only defense:
 

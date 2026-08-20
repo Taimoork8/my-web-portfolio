@@ -33,7 +33,7 @@ renderer.image = ({ href, title, text }) => {
   } else if (cleanHref.startsWith("./images/")) {
     cleanHref = cleanHref.replace("./images/", "/images/");
   }
-  return `<img src="${cleanHref}" alt="${text || ""}" title="${title || ""}" class="my-8 mx-auto rounded-xl border border-[#27272A] max-w-full h-auto" />`;
+  return `<img src="${cleanHref}" alt="${text || ""}" title="${title || ""}" loading="lazy" decoding="async" class="my-8 mx-auto rounded-xl border border-[#27272A] max-w-full h-auto" />`;
 };
 
 // Configure marked options

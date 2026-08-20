@@ -15,9 +15,9 @@ export default function Process() {
   const scaleX = useTransform(scrollYProgress, [0.2, 0.7], [0, 1]);
 
   return (
-    <section ref={containerRef} className="py-28 relative overflow-hidden">
+    <section ref={containerRef} className="py-10 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-6">
-        <div className="h-px bg-gradient-to-r from-transparent via-white/8 to-transparent mb-28" />
+        <div className="h-px bg-gradient-to-r from-transparent via-white/8 to-transparent mb-8" />
 
         {/* Header */}
         <motion.div
