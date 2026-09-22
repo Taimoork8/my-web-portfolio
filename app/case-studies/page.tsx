@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/case-studies",
   },
+  openGraph: {
+    url: "/case-studies",
+  },
 };
 
 const breadcrumb = breadcrumbJsonLd([

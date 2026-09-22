@@ -3,7 +3,7 @@ title: "Firebase vs Supabase in 2026: Which Backend Actually Fits Your App"
 slug: firebase-vs-supabase
 description: "A practical comparison of Firebase and Supabase in 2026 — architecture, pricing behavior, and the specific project types where each one wins."
 date: 2026-07-05
-tags: [firebase, supabase, backend, architecture]
+tags: [firebase, supabase, backend, architecture, flutter]
 cover: images/05-cover.svg
 ---
 

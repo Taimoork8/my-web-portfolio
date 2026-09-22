@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import ServicesPage from "@/components/pages/ServicesPage";
 import JsonLd from "@/components/JsonLd";
-import { SITE_URL, breadcrumbJsonLd } from "@/lib/seo";
+import { SITE_URL, breadcrumbJsonLd, PERSON_REF, INTERNATIONAL_AREA_SERVED } from "@/lib/seo";
 import { fullServices } from "@/lib/data";
 
 export const metadata: Metadata = {
@@ -10,6 +10,9 @@ export const metadata: Metadata = {
     "MVP development, SaaS platforms, mobile apps, AI systems, automation, and dashboards. Production-ready software for startups and businesses.",
   alternates: {
     canonical: "/services",
+  },
+  openGraph: {
+    url: "/services",
   },
 };
 
@@ -39,15 +42,8 @@ const servicesJsonLd = {
     name: service.title,
     serviceType: serviceTypesById[service.id] ?? [service.title],
     description: service.description,
-    provider: {
-      "@type": "Person",
-      name: "Taimoor Khan",
-      url: SITE_URL,
-    },
-    areaServed: {
-      "@type": "Place",
-      name: "Worldwide",
-    },
+    provider: PERSON_REF,
+    areaServed: INTERNATIONAL_AREA_SERVED,
     url: `${SITE_URL}/services#${service.id}`,
   })),
 };

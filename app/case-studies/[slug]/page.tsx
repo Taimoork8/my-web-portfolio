@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { projects } from "@/lib/data";
 import CaseStudyDetail from "@/components/pages/CaseStudyDetail";
 import JsonLd from "@/components/JsonLd";
-import { SITE_URL, breadcrumbJsonLd } from "@/lib/seo";
+import { SITE_URL, breadcrumbJsonLd, PERSON_REF } from "@/lib/seo";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -23,6 +23,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     alternates: {
       canonical: `/case-studies/${slug}`,
     },
+    openGraph: {
+      url: `/case-studies/${slug}`,
+    },
   };
 }
 
@@ -41,16 +44,8 @@ export default async function CaseStudyPage({ params }: Props) {
     keywords: project.stack,
     about: project.category,
     inLanguage: "en-US",
-    author: {
-      "@type": "Person",
-      name: "Taimoor Khan",
-      url: SITE_URL,
-    },
-    creator: {
-      "@type": "Person",
-      name: "Taimoor Khan",
-      url: SITE_URL,
-    },
+    author: PERSON_REF,
+    creator: PERSON_REF,
     ...(project.liveUrl ? { sameAs: [project.liveUrl] } : {}),
   };
 

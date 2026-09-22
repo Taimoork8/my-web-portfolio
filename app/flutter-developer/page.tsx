@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import RoleLandingPage, { Capability } from "@/components/pages/RoleLandingPage";
 import JsonLd from "@/components/JsonLd";
-import { SITE_URL, breadcrumbJsonLd } from "@/lib/seo";
+import { SITE_URL, breadcrumbJsonLd, PERSON_REF, INTERNATIONAL_AREA_SERVED } from "@/lib/seo";
 import { projects } from "@/lib/data";
 import { getAllPosts } from "@/lib/blog";
 
@@ -11,6 +11,9 @@ export const metadata: Metadata = {
     "Flutter developer with 5+ years shipping production cross-platform apps — offline-first architecture, BLE/IoT hardware integration, and AI-powered features for iOS and Android.",
   alternates: {
     canonical: "/flutter-developer",
+  },
+  openGraph: {
+    url: "/flutter-developer",
   },
 };
 
@@ -100,14 +103,12 @@ const roleJsonLd = {
   name: "Flutter App Development",
   serviceType: ["Flutter Development", "Mobile App Development", "BLE/IoT Mobile Integration"],
   description: metadata.description,
-  provider: {
-    "@type": "Person",
-    name: "Taimoor Khan",
-    url: SITE_URL,
-  },
-  areaServed: {
-    "@type": "Place",
-    name: "Worldwide",
+  provider: PERSON_REF,
+  areaServed: INTERNATIONAL_AREA_SERVED,
+  availableChannel: {
+    "@type": "ServiceChannel",
+    serviceUrl: `${SITE_URL}/contact`,
+    availableLanguage: ["en"],
   },
   url: `${SITE_URL}/flutter-developer`,
 };

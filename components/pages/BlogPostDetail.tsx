@@ -5,13 +5,17 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, Calendar, Tag, ArrowUpRight } from "lucide-react";
 import { BlogPost } from "@/lib/blog";
+import type { Project } from "@/lib/data";
 import "highlight.js/styles/github-dark.css";
 
 interface BlogPostDetailProps {
   post: BlogPost;
+  pillar?: { href: string; label: string } | null;
+  relatedProjects?: Project[];
+  relatedPosts?: Pick<BlogPost, "slug" | "title" | "description">[];
 }
 
-export default function BlogPostDetail({ post }: BlogPostDetailProps) {
+export default function BlogPostDetail({ post, pillar, relatedProjects = [], relatedPosts = [] }: BlogPostDetailProps) {
   return (
     <div className="min-h-screen pt-28 pb-20 relative">
       {/* Background Ambient Glows */}
@@ -91,6 +95,64 @@ export default function BlogPostDetail({ post }: BlogPostDetailProps) {
           className="blog-content mb-16"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
+
+        {/* Related case studies — proof of work matching this post's topic */}
+        {relatedProjects.length > 0 && (
+          <div className="mb-10">
+            <h2 className="font-display text-lg font-bold text-white mb-4">See it in production</h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {relatedProjects.map((project) => (
+                <Link key={project.id} href={`/case-studies/${project.slug}`}>
+                  <div className="group p-5 rounded-xl bg-[#111113] border border-white/8 hover:border-white/14 transition-colors h-full">
+                    <span
+                      className="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold mb-2"
+                      style={{ background: `${project.color}14`, color: project.color }}
+                    >
+                      {project.category}
+                    </span>
+                    <p className="font-display text-sm font-bold text-white mb-1.5">{project.title}</p>
+                    <p className="text-xs text-white/40 leading-relaxed">{project.tagline}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Related writing — sibling posts sharing at least one tag */}
+        {relatedPosts.length > 0 && (
+          <div className="mb-10">
+            <h2 className="font-display text-lg font-bold text-white mb-4">Continue reading</h2>
+            <div className="grid sm:grid-cols-2 gap-4">
+              {relatedPosts.map((related) => (
+                <Link key={related.slug} href={`/blog/${related.slug}`}>
+                  <div className="group p-5 rounded-xl bg-[#111113] border border-white/8 hover:border-white/14 transition-colors h-full">
+                    <p className="font-display text-sm font-bold text-white group-hover:text-white transition-colors mb-1.5">
+                      {related.title}
+                    </p>
+                    <p className="text-xs text-white/40 leading-relaxed">{related.description}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Related services — links the post back to the matching hiring page */}
+        {pillar && (
+          <div className="mb-10 p-6 rounded-2xl bg-white/3 border border-white/8">
+            <p className="text-sm text-white/60 mb-3">
+              Need this built for your product?
+            </p>
+            <Link
+              href={pillar.href}
+              className="inline-flex items-center gap-2 text-sm font-semibold text-[#C6F432] hover:text-[#d4fc4a] transition-colors"
+            >
+              {pillar.label}
+              <ArrowUpRight className="w-4 h-4" />
+            </Link>
+          </div>
+        )}
 
         {/* Premium Bottom Author / CTA Card */}
         <motion.div

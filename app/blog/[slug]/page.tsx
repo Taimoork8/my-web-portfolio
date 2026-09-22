@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import { getAllPosts, getPostBySlug } from "@/lib/blog";
 import BlogPostDetail from "@/components/pages/BlogPostDetail";
 import JsonLd from "@/components/JsonLd";
-import { SITE_URL, breadcrumbJsonLd } from "@/lib/seo";
+import { SITE_URL, SITE_NAME, breadcrumbJsonLd, PERSON_REF } from "@/lib/seo";
+import { projects } from "@/lib/data";
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -29,6 +30,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraph: {
       title: post.title,
       description: post.description,
+      url: `/blog/${slug}`,
+      siteName: SITE_NAME,
       type: "article",
       publishedTime: post.date,
     },
@@ -62,14 +65,8 @@ export default async function BlogPostPage({ params }: Props) {
       "@type": "WebPage",
       "@id": `${SITE_URL}/blog/${post.slug}`,
     },
-    author: {
-      "@type": "Person",
-      name: "Taimoor Khan",
-      url: SITE_URL,
-    },
-    publisher: {
-      "@id": `${SITE_URL}/#person`,
-    },
+    author: PERSON_REF,
+    publisher: PERSON_REF,
   };
 
   const breadcrumb = breadcrumbJsonLd([
@@ -78,11 +75,34 @@ export default async function BlogPostPage({ params }: Props) {
     { name: post.title, url: `/blog/${post.slug}` },
   ]);
 
+  // Same tag-matching pattern RoleLandingPage.tsx already uses in reverse
+  // (pillar -> posts). Here it's spoke -> pillar/case-study/sibling, which
+  // didn't exist before: a reader deep in a Flutter or Django post was never
+  // shown the matching hiring page or proof-of-work case study.
+  const pillar = post.tags.includes("flutter")
+    ? { href: "/flutter-developer", label: "Hire a Flutter Developer" }
+    : post.tags.includes("django")
+      ? { href: "/django-developer", label: "Hire a Django Developer" }
+      : null;
+
+  const relatedProjects = projects
+    .filter((p) => {
+      if (post.tags.includes("flutter") && p.stack.includes("Flutter")) return true;
+      if (post.tags.includes("django") && p.stack.some((s) => s.startsWith("Django"))) return true;
+      return false;
+    })
+    .slice(0, 2);
+
+  const relatedPosts = getAllPosts()
+    .filter((p) => p.slug !== post.slug && p.tags.some((t) => post.tags.includes(t)))
+    .slice(0, 3)
+    .map(({ slug: s, title, description }) => ({ slug: s, title, description }));
+
   return (
     <>
       <JsonLd id="blogposting-jsonld" data={blogPostingJsonLd} />
       <JsonLd id="breadcrumb-jsonld" data={breadcrumb} />
-      <BlogPostDetail post={post} />
+      <BlogPostDetail post={post} pillar={pillar} relatedProjects={relatedProjects} relatedPosts={relatedPosts} />
     </>
   );
 }

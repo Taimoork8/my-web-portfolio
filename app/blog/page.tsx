@@ -11,6 +11,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/blog",
   },
+  openGraph: {
+    url: "/blog",
+  },
 };
 
 const breadcrumb = breadcrumbJsonLd([
