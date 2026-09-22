@@ -24,14 +24,14 @@ const contactOptions = [
   {
     icon: Mail,
     label: "Email",
-    value: "kingtaimoor405@gmail.com",
+    value: "Get in touch directly",
     href: "mailto:kingtaimoor405@gmail.com",
     description: "Best for detailed project briefs",
   },
   {
     icon: GithubIcon,
     label: "GitHub",
-    value: "github.com/Taimoork8",
+    value: "Taimoor Khan",
     href: "https://github.com/Taimoork8",
     description: "See my open source work",
   },

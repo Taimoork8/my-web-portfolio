@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ArrowUpRight, Zap, Globe, Cpu, BarChart3, Smartphone } from "lucide-react";
+import { ArrowUpRight, Zap, Globe, Smartphone } from "lucide-react";
 
 // Heavy, desktop-only decorative widget (two live-simulated dashboards with
 // timers + framer-motion AnimatePresence). It's CSS-hidden below the lg
@@ -18,9 +18,6 @@ const DashboardVisual = dynamic(() => import("./DashboardVisual"), { ssr: false 
 const trustBadges = [
   { icon: Zap, label: "SaaS Platforms" },
   { icon: Smartphone, label: "Mobile Apps" },
-  { icon: Cpu, label: "Embedded Systems" },
-  { icon: Cpu, label: "Automation" },
-  { icon: BarChart3, label: "Dashboards" },
   { icon: Globe, label: "Remote Worldwide" },
 ];
 
@@ -100,14 +97,14 @@ export default function Hero() {
 
             {/* Headline — no fade-in: this is the LCP element, so it must
                 paint immediately instead of waiting on JS to animate opacity.
-                Names the two core roles directly (Flutter/Django developer)
-                instead of generic nouns, since this is the page's strongest
-                on-page ranking signal for those exact search terms. */}
+                Written for a human reader; the "Flutter developer"/"Django
+                developer" keyword phrasing lives in the page metadata
+                (title, keywords, OG description in app/layout.tsx) instead
+                of being forced twice into the primary sentence. */}
             <h1 className="font-display text-[2.75rem] sm:text-5xl lg:text-[3.25rem] font-bold leading-[1.1] tracking-tight text-white mb-5">
-              I&apos;m a{" "}
-              <span className="text-gradient">Flutter developer</span> &{" "}
-              <span className="text-gradient">Django developer</span>{" "}
-              building scalable SaaS platforms.
+              I build{" "}
+              <span className="text-gradient">scalable SaaS platforms</span>{" "}
+              — Flutter apps, Django backends, shipped end-to-end.
             </h1>
 
             {/* Subheadline */}

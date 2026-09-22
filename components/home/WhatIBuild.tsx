@@ -51,7 +51,12 @@ const items = [
     description: "LLM integrations, intelligent scoring systems, and automated pipelines that work in production.",
     accent: "#C6F432",
     gridClass: "lg:col-span-1",
-    meta: null,
+    meta: (
+      <div className="mt-5 flex flex-wrap gap-2">
+        <span className="text-[10px] font-mono bg-white/5 border border-white/8 text-white/50 px-2 py-0.5 rounded">LLM Integrations</span>
+        <span className="text-[10px] font-mono bg-white/5 border border-white/8 text-white/50 px-2 py-0.5 rounded">Automated Pipelines</span>
+      </div>
+    ),
   },
   {
     icon: Users,
@@ -59,7 +64,12 @@ const items = [
     description: "Custom CRM platforms with lead management, sales pipelines, and team dashboards tailored to your workflow.",
     accent: "#FF6B3D",
     gridClass: "lg:col-span-1",
-    meta: null,
+    meta: (
+      <div className="mt-5 flex flex-wrap gap-2">
+        <span className="text-[10px] font-mono bg-white/5 border border-white/8 text-white/50 px-2 py-0.5 rounded">Lead Pipelines</span>
+        <span className="text-[10px] font-mono bg-white/5 border border-white/8 text-white/50 px-2 py-0.5 rounded">Team Workflows</span>
+      </div>
+    ),
   },
   {
     icon: LayoutDashboard,
@@ -67,7 +77,12 @@ const items = [
     description: "Real-time analytics dashboards with interactive charts, KPIs, and role-based access for teams.",
     accent: "#6DE7FF",
     gridClass: "lg:col-span-1",
-    meta: null,
+    meta: (
+      <div className="mt-5 flex flex-wrap gap-2">
+        <span className="text-[10px] font-mono bg-white/5 border border-white/8 text-white/50 px-2 py-0.5 rounded">Real-Time Analytics</span>
+        <span className="text-[10px] font-mono bg-white/5 border border-white/8 text-white/50 px-2 py-0.5 rounded">Role-Based Access</span>
+      </div>
+    ),
   },
   {
     icon: Wrench,
